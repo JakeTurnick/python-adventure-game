@@ -1,0 +1,19 @@
+The team project is to make a text adventure game using Python that will run on the command line. 
+    Each team must have a main.py that imports each team member's separate .py file.
+    Yes. Each team member is responsible for creating their piece of the adventure,
+    and you must work together to integrate everyone's code.
+
+Here's an example: Create a game where the character must travel through every room in a haunted house before exiting - 
+    if they exit the house alive - they win the game! 
+    Each team member could be responsible for creating a room. 
+    Inside the room, the player could have to complete a challenge, 
+    (e.g. battling Jason and winning a key that will open the door to the next room),
+    receive a clue that will help them in the next room (e.g. answer a riddle receive a clue),
+    be granted a special power for a limited amount of time (e.g. the ability to walk through walls),
+    etc. Your imagination is the limit.
+
+Requirements. Use Python data types (review notes if you need to).
+    Use Python classes! Yes. You must use classes! Use Python methods! Have fun! 
+
+
+"As you drive down a winding
