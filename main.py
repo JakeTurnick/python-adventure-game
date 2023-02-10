@@ -11,15 +11,15 @@ class Main_Game:
 
     def __init__(self, key=0):
 
-        def print_old(message):
+        def green_text(message):
             for c in message:
-                print(Fore.GREEN + c, end='', flush=True)
+                print(Fore.GREEN + c, end='')
                 time.sleep(0.01)
-        print(Style.RESET_ALL, end='', flush=True)
+        print(Style.RESET_ALL, end='')
 
-        print_old("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure.  \n")
+        green_text("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure.  \n")
         time.sleep(3)
-        print_old("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n")
+        green_text("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n")
         time.sleep(6)
 
         self.key = key
