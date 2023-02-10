@@ -35,7 +35,7 @@ class Main_Game:
     #starting choices:
         choose_start = input("Would you like to inpsect yourself or the car first? (Type: MYSELF or CAR) \n")
         if choose_start.upper() == "MYSELF":
-            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound"), COLOR[0])
+            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound...\n"), COLOR[0])
             time.sleep(3)
     #name 'str' for other option (see 'choose_start_alt') w/ 'start_other'
             start_other = "CAR"
@@ -49,9 +49,9 @@ class Main_Game:
             print_slow(("Please type MYSELF or CAR to continue... \n"), COLOR[0])
             time.sleep(3)
     #option to pick alternative option...
-        choose_start_alt = input(f"Would I like to inpsect {start_other}? (Type: {start_other})")
+        choose_start_alt = input(f"Would I like to inpsect {start_other}? (Type: {start_other}) \n")
         if choose_start_alt == "MYSELF":
-            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound"), COLOR[0])
+            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound\n"), COLOR[0])
             time.sleep(3)
         elif choose_start_alt == "CAR":
             print_slow(("You chose car...LOADING \n"), COLOR[0])
@@ -60,7 +60,7 @@ class Main_Game:
             print_slow(("...LOADING \n"), COLOR[0])
             time.sleep(3)
 
-        choose_call_for_help = input(f"You find your phone in the car. Who do you call first? (Options: 911 or LINDA, your wife")
+        choose_call_for_help = input(f"You find your phone in the car. \nWho do you call first? (Options: 911 or LINDA, your wife...\n")
         if choose_call_for_help == "911":    
             print("LOADING... \n")
         elif choose_call_for_help == "LINDA":
@@ -68,7 +68,7 @@ class Main_Game:
 
     def start_room(self):
         room_choice = input(
-            "Which room would you like to enter? (rm1/rm2/rm3)")
+            "Which room would you like to enter? (rm1/rm2/rm3)\n")
 
         if room_choice == "rm1":
             rm1_class(self.key).play_room_one()  # imported
