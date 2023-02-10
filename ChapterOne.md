@@ -49,4 +49,4 @@ print("You look around. You're in your car but you've wrecked. All you remember 
     print("You sit in your car and wait for help. You wait... and wait. You check your phone, it's been over and hour and no one has driven up or down the road. How strange.... ")
 
 #Choice walk:
-print("You walk ")
+print("You walk to town. You notice while you walk that the weather is strangely foggy. Which seems strange for this time of ")
