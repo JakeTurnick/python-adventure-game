@@ -8,6 +8,9 @@ class Main_Game:
     def __init__(self):
         pass
 
+    def start_room():
+        pass
+
     # while keys < 3:
         # prompt choice
 
@@ -20,6 +23,9 @@ class Main_Game:
 
     # def end:
         # putting car pieces in and leaving
+
+    def end_room():
+        pass
 
     # if keys > 3:
         # end function
