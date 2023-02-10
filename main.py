@@ -5,6 +5,7 @@ from rm1 import rm1_class
 import rm2
 import rm3
 
+#LOADING = no story here yet :(
 
 class Main_Game:
     # starting game
@@ -33,12 +34,12 @@ class Main_Game:
 
     #starting choices:
         choose_start = input("Would you like to inpsect yourself or the car first? (Type: MYSELF or CAR) \n")
-        if choose_start == "MYSELF":
+        if choose_start.upper() == "MYSELF":
             print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound"), COLOR[0])
             time.sleep(3)
     #name 'str' for other option (see 'choose_start_alt') w/ 'start_other'
             start_other = "CAR"
-        elif choose_start == "CAR":
+        elif choose_start.upper() == "CAR":
     #left 'LOADING' to fill in later 
             print_slow(("You chose car...LOADING \n"), COLOR[0])
             time.sleep(3)
@@ -59,7 +60,11 @@ class Main_Game:
             print_slow(("...LOADING \n"), COLOR[0])
             time.sleep(3)
 
-
+        choose_call_for_help = input(f"You find your phone in the car. Who do you call first? (Options: 911 or LINDA, your wife")
+        if choose_call_for_help == "911":    
+            print("LOADING... \n")
+        elif choose_call_for_help == "LINDA":
+            print("LOADING... \n")
 
     def start_room(self):
         room_choice = input(
