@@ -45,6 +45,12 @@ class Room_One(Main_Game):
 
     .super().__init__(msg)     <-- how we think of super() in JS
 
-    def say_name(text):
+    def say_name(self, text):     <-- method of Room_one
         print(text + self.name)
         # should print ("my name is {self.name})
+
+
+test = Room_One
+
+    EX: test.say_name(text) = VALID
+    EX2: test.say_name(self, text) = too many parameters (placement elements) expects 1: got 2

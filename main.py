@@ -17,3 +17,9 @@ class Main_Game:
         # rm2() #imported
     # else
         # rm3() #imported
+
+    # def end:
+        # putting car pieces in and leaving
+
+    # if keys > 3:
+        # end function
