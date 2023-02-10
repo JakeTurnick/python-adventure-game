@@ -9,7 +9,9 @@ import rm3
 class Main_Game:
     # starting game
 
+
     def __init__(self, key=0):
+        self.key = key
         
         COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
         
@@ -23,13 +25,37 @@ class Main_Game:
         print(Style.RESET_ALL, end='')
 
         #intro text 
-        print_slow(("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure...  \n"), COLOR[1])
+        print_slow(("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure...  \n"), COLOR[0])
         time.sleep(3)
         
-        print_slow(("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n"), COLOR[1])
-        time.sleep(6)
+        print_slow(("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n"), COLOR[0])
+        time.sleep(3)
 
-        self.key = key
+    #starting choices:
+        choose_start = input("Would you like to inpsect yourself or the car first? (Type: MYSELF or CAR) \n")
+        if choose_start == "MYSELF":
+            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound"), COLOR[0])
+            time.sleep(3)
+            start_other = "CAR"
+        elif choose_start == "CAR":
+            print_slow(("You chose car...LOADING \n"), COLOR[0])
+            time.sleep(3)
+            start_other = "MYSELF"
+    #trying to figure out how we can loop this back to the start if player does not make a choice?
+        elif choose_start_alt != "MYSELF" or "CAR":
+            print_slow(("Please type MYSELF or CAR to continue... \n"), COLOR[0])
+            time.sleep(3)
+    #option to pick alternative option...
+        choose_start_alt = input(f"Would I like to inpsect {start_other}? (Type: {start_other})")
+        if choose_start_alt == "MYSELF":
+            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound"), COLOR[0])
+            time.sleep(3)
+        elif choose_start_alt == "CAR":
+            print_slow(("You chose car...LOADING \n"), COLOR[0])
+            time.sleep(3)
+        elif choose_start_alt != "MYSELF" or "CAR":
+            print_slow(("...LOADING \n"), COLOR[0])
+            time.sleep(3)
 
 
     def start_room(self):
