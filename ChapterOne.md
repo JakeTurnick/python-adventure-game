@@ -49,4 +49,10 @@ print("You look around. You're in your car but you've wrecked. All you remember 
     print("You sit in your car and wait for help. You wait... and wait. You check your phone, it's been over and hour and no one has driven up or down the road. How strange.... ")
 
 #Choice walk:
-print("You walk to town. You notice while you walk that the weather is strangely foggy. Which seems strange for this time of ")
+print("You walk to town. You notice while you walk that the weather is strangely foggy. Which seems strange for this time of year. As you draw nearer towards the town, the fog becomes more and more dense.")
+
+print("The fog feels like it has it's own will. Like it's watching you. It envelops you. You swear that you see little shadows dancing in the fog. You can hardly see your own hand in front of you. You must be getting close to the town. You've lived here all your life. You know that by now you should be seeing buildings.")
+
+print("Just as quick as the fog descended upon you, the dense fog seems to almost vanish. It thins out as you enter the town. The fog seems to thinly hang around on the ground now. You look back and see the thick fog wall behind you. Your head throbs and your vision is blurry. You look for help but... no one is around?")
+
+#Choice: look around? Or head to the nearest pharmacy? 
