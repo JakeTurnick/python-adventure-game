@@ -16,4 +16,35 @@ Requirements. Use Python data types (review notes if you need to).
     Use Python classes! Yes. You must use classes! Use Python methods! Have fun! 
 
 
-"As you drive down a winding
+
+Class and inheritence guide:
+self (PY) === this (JS)
+self is equal accross all inheritence (no self.self.name -> self.name)
+self is a given
+
+.super() -> returns temporary copy of inherited class
+
+class Main_Game:    <-- Class definition
+
+    def __init__(msg, name, age):     <-- Main_Game's constructor()
+        self.name = name
+        self.age = age
+        self.msg = msg
+        (in JS): this.msg = msg
+
+    def hi_method:      <-- a method of Main_Game
+        print("hi")
+
+
+class Room_One(Main_Game):
+    def __init__:
+
+    .super()    <-- references parent class
+
+    .super().hi_method()    <-- prints "hi" (from the inherited class)
+
+    .super().__init__(msg)     <-- how we think of super() in JS
+
+    def say_name(text):
+        print(text + self.name)
+        # should print ("my name is {self.name})
