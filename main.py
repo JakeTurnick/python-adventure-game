@@ -10,16 +10,23 @@ class Main_Game:
     # starting game
 
     def __init__(self, key=0):
-
-        def green_text(message):
+        
+        COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+        
+        #print_slow("message", COLOR['x']) slows the speed of text
+        #place index value from array above inside [] to choose color
+        def print_slow(message, COLOR):
             for c in message:
-                print(Fore.GREEN + c, end='')
+                print(COLOR + c, end='')
+                #change speed of text below -> set to 0.1 for live review
                 time.sleep(0.01)
         print(Style.RESET_ALL, end='')
 
-        green_text("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure.  \n")
+        #intro text 
+        print_slow(("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure...  \n"), COLOR[1])
         time.sleep(3)
-        green_text("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n")
+        
+        print_slow(("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n"), COLOR[1])
         time.sleep(6)
 
         self.key = key
