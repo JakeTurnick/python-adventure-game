@@ -15,16 +15,16 @@ class Main_Game:
         
         COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
         
-        #print_slow("message", COLOR['x']) slows the speed of text
-        #place index value from array above inside [] to choose color
+    #print_slow("message", COLOR['x']) slows the speed of text
+    #place index value from array above inside [] to choose color
         def print_slow(message, COLOR):
             for c in message:
                 print(COLOR + c, end='')
-                #change speed of text below -> set to 0.1 for live review
+    #change speed of text below -> set to 0.1 for live review
                 time.sleep(0.01)
         print(Style.RESET_ALL, end='')
 
-        #intro text 
+    #intro text
         print_slow(("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure...  \n"), COLOR[0])
         time.sleep(3)
         
@@ -36,8 +36,10 @@ class Main_Game:
         if choose_start == "MYSELF":
             print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound"), COLOR[0])
             time.sleep(3)
+    #name 'str' for other option (see 'choose_start_alt') w/ 'start_other'
             start_other = "CAR"
         elif choose_start == "CAR":
+    #left 'LOADING' to fill in later 
             print_slow(("You chose car...LOADING \n"), COLOR[0])
             time.sleep(3)
             start_other = "MYSELF"
@@ -56,6 +58,7 @@ class Main_Game:
         elif choose_start_alt != "MYSELF" or "CAR":
             print_slow(("...LOADING \n"), COLOR[0])
             time.sleep(3)
+
 
 
     def start_room(self):
