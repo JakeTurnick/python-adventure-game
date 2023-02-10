@@ -1,3 +1,6 @@
+import time
+from colorama import init, Fore, Style
+init(autoreset=True)
 from rm1 import rm1_class
 import rm2
 import rm3
@@ -5,12 +8,26 @@ import rm3
 
 class Main_Game:
     # starting game
+
     def __init__(self, key=0):
+
+        def print_old(message):
+            for c in message:
+                print(Fore.GREEN + c, end='', flush=True)
+                time.sleep(0.01)
+        print(Style.RESET_ALL, end='', flush=True)
+
+        print_old("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure.  \n")
+        time.sleep(3)
+        print_old("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n")
+        time.sleep(6)
+
         self.key = key
+
 
     def start_room(self):
         room_choice = input(
-            "which room would you like to enter? (rm1/rm2/rm3)")
+            "Which room would you like to enter? (rm1/rm2/rm3)")
 
         if room_choice == "rm1":
             rm1_class(self.key).play_room_one()  # imported
