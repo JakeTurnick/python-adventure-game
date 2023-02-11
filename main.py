@@ -14,50 +14,51 @@ class Main_Game:
     def __init__(self, key=0):
         self.key = key
         
-        COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+    COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
         
     #print_slow("message", COLOR['x']) slows the speed of text
     #place index value from array above inside [] to choose color
-        def print_slow(message, COLOR):
-            for c in message:
-                print(COLOR + c, end='')
+    def print_slow(self, message, COLOR):
+        for c in message:
+            print(COLOR + c, end='')
     #change speed of text below -> set to 0.1 for live review
-                time.sleep(0.01)
-        print(Style.RESET_ALL, end='')
+            time.sleep(0.01)
+    print(Style.RESET_ALL, end='')
 
     #intro text
-        print_slow(("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure...  \n"), COLOR[0])
-        time.sleep(3)
-        
-        print_slow(("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n"), COLOR[0])
+    def print_intro(self):
+        self.print_slow(("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure...  \n"), self.COLOR[0])
         time.sleep(3)
 
-    #starting choices:
+        self.print_slow(("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n"), self.COLOR[0])
+        time.sleep(3)
+
+        #starting choices:
         choose_start = input("Would you like to inpsect yourself or the car first? (Type: MYSELF or CAR) \n")
         if choose_start.upper() == "MYSELF":
-            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound...\n"), COLOR[0])
+            self.print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound...\n"), self.COLOR[0])
             time.sleep(3)
     #name 'str' for other option (see 'choose_start_alt') w/ 'start_other'
             start_other = "CAR"
         elif choose_start.upper() == "CAR":
     #left 'LOADING' to fill in later 
-            print_slow(("You chose car...LOADING \n"), COLOR[0])
+            self.print_slow(("You chose car...LOADING \n"), self.COLOR[0])
             time.sleep(3)
             start_other = "MYSELF"
     #trying to figure out how we can loop this back to the start if player does not make a choice?
         elif choose_start_alt != "MYSELF" or "CAR":
-            print_slow(("Please type MYSELF or CAR to continue... \n"), COLOR[0])
+            self.print_slow(("Please type MYSELF or CAR to continue... \n"), self.COLOR[0])
             time.sleep(3)
     #option to pick alternative option...
-        choose_start_alt = input(f"Would I like to inpsect {start_other}? (Type: {start_other}) \n")
+        choose_start_alt = input(f"Would you like to inpsect {start_other}? (Type: {start_other}) \n")
         if choose_start_alt == "MYSELF":
-            print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound\n"), COLOR[0])
+            self.print_slow(("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound\n"), self.COLOR[0])
             time.sleep(3)
         elif choose_start_alt == "CAR":
-            print_slow(("You chose car...LOADING \n"), COLOR[0])
+            self.print_slow(("You chose car...LOADING \n"), self.COLOR[0])
             time.sleep(3)
         elif choose_start_alt != "MYSELF" or "CAR":
-            print_slow(("...LOADING \n"), COLOR[0])
+            self.print_slow(("...LOADING \n"), self.COLOR[0])
             time.sleep(3)
 
         choose_call_for_help = input(f"You find your phone in the car. \nWho do you call first? (Options: 911 or LINDA, your wife...\n")
@@ -92,4 +93,5 @@ class Main_Game:
 
 
 new_game = Main_Game()
+new_game.print_intro()
 new_game.start_room()
