@@ -4,6 +4,10 @@ class rm1_class:
         # key passed in from Main_Game creating new rm1_class
 
     def play_room_one(self):
+
+        print("You enter the lobby of the clinic. You are looking for gauze to wrap your head wound and some pain killers")
+
+        print("You hear nothning but silence")
         choice = input("Would you like to make a choice? (y/n)")
 
         if choice.lower() == "y":
