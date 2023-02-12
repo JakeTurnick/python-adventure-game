@@ -11,7 +11,6 @@
 
 from time import sleep
 
-
 class rm2:
     def __init__(self, main):
         self.key = main.key
