@@ -14,6 +14,7 @@ class Main_Game:
     def __init__(self, key=0):
         self.key = key
 
+    def play_game(self):
         COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
 
         skip = input("would you like to skip intro (for testing)? (y/n) : ")
@@ -126,5 +127,5 @@ class Main_Game:
 
 
 new_game = Main_Game()
-new_game.print_intro()
+new_game.play_game()
 new_game.start_room()
