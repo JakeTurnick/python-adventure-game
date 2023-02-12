@@ -1,47 +1,36 @@
-import rm3
-import rm2
-from rm1 import rm1_class
 import time
 from colorama import init, Fore, Style
 init(autoreset=True)
+from rm1 import rm1_class
+import rm2
+import rm3
 
-# LOADING = no story here yet :(
-
+#LOADING = no story here yet :(
 
 class Main_Game:
     # starting game
 
+
     def __init__(self, key=0):
         self.key = key
+        
+    COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+        
+    #print_slow("message", COLOR['x']) slows the speed of text
+    #place index value from array above inside [] to choose color
+    def print_slow(self, message, COLOR):
+        for c in message:
+            print(COLOR + c, end='', flush=True)
+    #change speed of text below -> set to 0.1 for live review
+            time.sleep(0.01)
+            print(Style.RESET_ALL, end='', flush=True)
 
-    def play_game(self):
-        COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
-
-        skip = input("would you like to skip intro (for testing)? (y/n) : ")
-        if skip == "y":
-            room_sel = input("which room would you like to test (1, 2, 3) : ")
-            if room_sel == "3":
-                print("keys before rm3: ", self.key)
-                rm3.Garage.play_garage(self.key)  # imported
-                print("keys after rm3: ", self.key)
-
-    # print_slow("message", COLOR['x']) slows the speed of text
-    # place index value from array above inside [] to choose color
-
-        def print_slow(message, COLOR):
-            for c in message:
-                print(COLOR + c, end='')
-    # change speed of text below -> set to 0.1 for live review
-                time.sleep(0.01)
-        print(Style.RESET_ALL, end='')
-
-    # intro text
-        print_slow(
-            ("You slowly come too, you've been unconsious for some time. \nHow long, you're not sure...  \n"), COLOR[0])
+    #intro text
+    def print_intro(self):
+        self.print_slow(("You slowly come too... \nyou've been unconsious for some time... \nHow long, you're not sure...  \n"), self.COLOR[0])
         time.sleep(3)
 
-        print_slow(
-            ("You look around. \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control. \nIt seems a tree limb pierced the windshield, cracking it... \n"), COLOR[0])
+        self.print_slow(("You look around... \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control... \nIt seems a tree limb pierced the windshield, cracking it... \n"), self.COLOR[0])
         time.sleep(3)
 
         #list of starting choices:
@@ -109,9 +98,7 @@ class Main_Game:
         elif room_choice == "rm2":
             rm2.rm2.play_room_two()  # imported
         else:
-            print("keys before rm3: ", self.key)
-            rm3.Garage.play_garage(self.key)  # imported
-            print("keys after rm3: ", self.key)
+            rm3.rm3.play_room_three()  # imported
 
     # while keys < 3:
         # prompt choice
@@ -127,5 +114,5 @@ class Main_Game:
 
 
 new_game = Main_Game()
-new_game.play_game()
+new_game.print_intro()
 new_game.start_room()
