@@ -11,8 +11,10 @@ from time import sleep
 
 
 class Garage:
-    def __init__(self, key):
-        self.key = key
+    def __init__(self, add_key, prev_self):
+        # self.key = key
+        self.main = prev_self
+        self.add_key = add_key
         self.flash_light = False
         self.car_key = False
         self.crowbar = False
@@ -56,14 +58,6 @@ class Garage:
                 "You see a flashlight and batteries behind the counter... almost like someone dropped them")
             take_light = input("Take the flashlight? (y/n) : ")
 
-            # one-liner below
-            # light_test = take_light.lower() == "y" or take_light.lower() == "n"
-            # print(light_test)
-            # while light_test is not True:
-            #     take_light = input(
-            #         "Invalid input - Take the flashlight? (y/n) : ")
-            #     light_test = take_light.lower() == "y" or take_light.lower() == "n"
-
             while take_light.lower() != "y" and take_light.lower() != "n":
                 take_light = input(
                     "Invalid input - Take the flashlight? (y/n) : ")
@@ -93,7 +87,27 @@ class Garage:
         if self.flash_light == True:
             print("You open the door to the garage")
             sleep(.5)
-            print("thankfully you have a flashlight")
+            print("Thankfully you have a flashlight and can look around")
+            sleep(.5)
+            print(
+                "The garage seems to be a large working area for mechanics and doors to various rooms")
+            sleep(.5)
+            print(
+                "Using your flaslight the doors are clearly labeled \n\"Entrance\" \"Office\" \"Storage\" ")
+            room_choice = input(
+                "What do you do? (\"explore garage\" \"enter office\" \"check storage room\" \"hey\") ")
+            if room_choice == "explore garage":
+                pass
+            elif room_choice == "enter office":
+                pass
+            elif room_choice == "check storage room":
+                pass
+            elif room_choice == "hey":
+                print("You utter a greeting to the void")
+                print(". . . h . e . l . l . o . .")
+
+                pass
+
         else:
             print("The garage is dark without a flashlight")
         pass
@@ -103,14 +117,14 @@ class Garage:
         choice = input("Would you like to get another key? (y/n)")
 
         if choice.lower() == "y":
-            print(f"RM3: You had {self.key} keys before")
-            self.key += 1
-            print(f"You now have {self.key} keys")
-            return self.key
+            # print(f"RM3: You had {self.key} keys before")
+            self.add_key()
+            # print(f"You now have {self.key} keys")
+            # return self.key
         else:
-            print(f"RM3: You have {self.key} keys")
-            return self.key
+            pass
+            # print(f"RM3: You have {self.key} keys")
+            # return self.key
 
-
-# test = Garage(key=1)
-# test.play_garage()
+            # test = Garage(key=1)
+            # test.play_garage()
