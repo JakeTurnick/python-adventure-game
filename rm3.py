@@ -11,10 +11,10 @@ from time import sleep
 
 
 class Garage:
-    def __init__(self, add_key, prev_self):
-        # self.key = key
-        self.main = prev_self
-        self.add_key = add_key
+    # key, life
+    def __init__(self, main):
+        self.key = main.key
+        self.life = main.life
         self.flash_light = False
         self.car_key = False
         self.crowbar = False
@@ -22,7 +22,7 @@ class Garage:
         self.tire = False
 
     def play_garage(self):
-        test_input = input("Would you like to play the garage? (y/n) : ")
+        test_input = input("Would you like to test the garage? (y/n) : ")
         if test_input.lower() == "y":
             self.play_room_three()
             # self.entrance()
@@ -33,6 +33,11 @@ class Garage:
             print(f"Keys: {self.key}")
         # entrance
         return self.key
+
+    def play(self):
+        while self.life == True:
+            self.enntrace()
+            self.garage()
 
     def entrance(self):
         print("You enter the garage, the lights appear to be out but the store front windows allow you to see")
@@ -118,10 +123,14 @@ class Garage:
 
         if choice.lower() == "y":
             # print(f"RM3: You had {self.key} keys before")
-            self.add_key()
-            # print(f"You now have {self.key} keys")
-            # return self.key
+            self.key += 1
+            return {"key": self.key, "life": self.life}
+
         else:
+            print("You died")
+            self.life = False
+            return {"key": self.key, "life": self.life}
+
             pass
             # print(f"RM3: You have {self.key} keys")
             # return self.key

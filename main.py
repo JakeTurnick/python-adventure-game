@@ -9,21 +9,73 @@ init(autoreset=True)
 
 
 class Main_Game:
-    # starting game
-
-    def __init__(self, key=0):
+    # defining our keys to victory
+    def __init__(self, key=1):
         self.key = key
+        self.life = True
 
     COLOR = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
-
     # print_slow("message", COLOR['x']) slows the speed of text
-    # place index value from array above inside [] to choose color
+    # place index value from list above inside [] to choose color
+
     def print_slow(self, message, COLOR):
         for c in message:
+
             print(COLOR + c, end='', flush=True)
     # change speed of text below -> set to 0.1 for live review
             time.sleep(0.01)
             print(Style.RESET_ALL, end='', flush=True)
+
+    def test(self):
+        rm_choice = input("select a room (1/2/3)\n")
+        while rm_choice != "1" and rm_choice != "2" and rm_choice != "3":
+            # only if it's a choice we want
+            rm_choice = input("select a room (1/2/3)\n")
+
+        if rm_choice == "1":
+            # rm 1
+            pass
+        elif rm_choice == "2":
+            pass
+        elif rm_choice == "3":
+            # THIS WORKS! Make sure your room does 2 things if you win:
+            # self.key += 1 // return self.key
+            while self.life == True:
+                print(f"You had {self.key} keys")
+                var = rm3.Garage(self).play_room_three()
+                # Var is a dictionary with 2 keys(key & life) which are the values -
+                # returned from the play function (self.key, self.life)
+                self.key = var["key"]
+                self.life = var["life"]
+                print(f"You now have {self.key} keys")
+            if self.life == False:
+                print("You died")
+
+    def play_main(self):
+        self.print_intro()
+        while self.life == True:
+            room_choice = input(
+                "Which room would you like to enter? (rm1/rm2/rm3)\n")
+
+            while room_choice != "rm1" and room_choice != "rm2" and room_choice != "rm3":
+                room_choice = input(
+                    "Which room would you like to enter? (rm1/rm2/rm3)\n")
+
+            if room_choice == "rm1":
+                rm1_class(self.key).play_room_one()  # imported
+                # instanciate rm1 with key from Main_Game & call play room
+            elif room_choice == "rm2":
+                rm2.rm2(self.key).play_market()  # imported
+            else:  # room_choice == "rm3"
+                print(f"You had {self.key} keys")
+                self.key = rm3.Garage(self.key).play_room_three()
+                # returns new self.key value after victory
+                print(f"You now have {self.key} keys")
+
+            # after each room - if statement to check if life == False & break
+            # rm3(self).play
+            if self.keys > 3:
+                self.end_room()
 
     # intro text
     def print_intro(self):
@@ -103,25 +155,7 @@ class Main_Game:
                 ("Please choose 'WALK' or 'WAIT' to continue... \n"), self.COLOR[0])
             time.sleep(3)
 
-    def start_room(self):
-        room_choice = input(
-            "Which room would you like to enter? (rm1/rm2/rm3)\n")
-
-        if room_choice == "rm1":
-            rm1_class(self.key).play_room_one()  # imported
-            # instanciate rm1 with key from Main_Game & call play room
-        elif room_choice == "rm2":
-            rm2.rm2.play_room_two()  # imported
-        else:
-            rm3.rm3.play_room_three()  # imported
-
-    # while keys < 3:
-        # prompt choice
-
-    # def end:
-        # putting car pieces in and leaving
-
-    def end_room():
+    def end_room(self):
         pass
 
     # if keys > 3:
@@ -129,5 +163,5 @@ class Main_Game:
 
 
 new_game = Main_Game()
-new_game.print_intro()
-new_game.start_room()
+new_game.test()
+# new_game.play_main()

@@ -1,13 +1,13 @@
-#from main import COLOR, print_slow
+# from main import COLOR, print_slow
 
-#COUNTY MARKET
-#Items to find to pass 
-##Batteries == KEY for rm2 
-##Snacks 
-##Water
-##scene: front desk 'back in five', aisles, stock room (attacked by crawler, finds batteries), office/break room
-##enemies: 'crawler'
-##description: shadow creature that stalks prey from the shadows
+# COUNTY MARKET
+# Items to find to pass
+# Batteries == KEY for rm2
+# Snacks
+# Water
+# scene: front desk 'back in five', aisles, stock room (attacked by crawler, finds batteries), office/break room
+# enemies: 'crawler'
+# description: shadow creature that stalks prey from the shadows
 
 from time import sleep
 
@@ -17,8 +17,8 @@ class rm2:
         self.key = key
         self.batteries = False
         self.basket = False
-    
-    def play_market (self):
+
+    def play_market(self):
         test_market = input("Would you like to play the market? (y/n) : \n")
         if test_market.lower() == "y":
             self.play_room_two()
@@ -58,7 +58,8 @@ class rm2:
                 sleep(5)
                 print("Suddenly...\n")
                 sleep(1)
-                print("You hear scratching noises...and a low, deep growl in the darkness behind you...\n")
+                print(
+                    "You hear scratching noises...and a low, deep growl in the darkness behind you...\n")
                 sleep(2)
                 print("Oh no...it's too late...\n")
                 sleep(3)
@@ -77,7 +78,8 @@ class rm2:
                 if leave_or_continue.lower() == "y":
                     print("Suddenly...\n")
                     sleep(1)
-                    print("You hear scratching noises...and a low, deep growl in the darkness behind you...\n")
+                    print(
+                        "You hear scratching noises...and a low, deep growl in the darkness behind you...\n")
                     sleep(2)
                     print("A twisted, frightening, humanoid creature lunges out of the shadows at you...\nit's face distorted with \n eyes gaunt and gleaming with ravenous hunger\n")
                     sleep(1)
@@ -85,7 +87,8 @@ class rm2:
                     sleep(1)
                     print("You think of Linda... and how \nchoosing to run away led to your demise...\nhow she probably figured you'd end up like this one day\n")
                     sleep(1)
-                    print("Oh well...maybe next time you'll \nmake more interesting choices instead of \nrunning away from all of your problems...\n")
+                    print(
+                        "Oh well...maybe next time you'll \nmake more interesting choices instead of \nrunning away from all of your problems...\n")
                     sleep(1)
 #!!!!!!!NEED TO END GAME HERE!!!!!!!!!!!!!!
                     print("GAME OVER")
@@ -95,11 +98,7 @@ class rm2:
 
     def aisle_or_stock(self):
         print("You start walking down the aisles when you notice an open door to what looks like a storage room...")
-        #shop_or_room = input("Do you want to check out the room or keep shopping? (Choose: ROOM or SHOP)\n")
-
-
-
-
+        # shop_or_room = input("Do you want to check out the room or keep shopping? (Choose: ROOM or SHOP)\n")
 
         choice = input("Would you like to make a choice? (y/n)")
 
@@ -108,5 +107,6 @@ class rm2:
         else:
             print("RM2: NO!? Jokes on you - you never had a choice")
 
+
 test_rm2 = rm2("some_key")
-test_rm2.play_market()
+# test_rm2.play_market()
