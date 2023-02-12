@@ -14,6 +14,8 @@ class rm1_class:
         # key passed in from Main_Game creating new rm1_class
   
         def play_room_one(self):
+            print("Would you like to enter the clinic?")
+            print("Choose yes or no: ", end="")
             choice = input("")
             print("You enter the lobby of the clinic. You are looking for gauze to wrap your head wound and some pain killers")
 
