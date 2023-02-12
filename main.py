@@ -33,6 +33,7 @@ class Main_Game:
             rm_choice = input("select a room (1/2/3)\n")
 
         if rm_choice == "1":
+            rm1_class(self).test_room_one()
             # rm 1
             pass
         elif rm_choice == "2":
@@ -69,8 +70,10 @@ class Main_Game:
                     "Which room would you like to enter? (rm1/rm2/rm3)\n")
 
             if room_choice == "rm1":
+                print(f"You now have {self.key} keys")
                 rm1_class(self.key).play_room_one()  # imported
                 # instanciate rm1 with key from Main_Game & call play room
+                print(f"You now have {self.key} keys")
             elif room_choice == "rm2":
                 rm2.rm2(self.key).play_market()  # imported
             else:  # room_choice == "rm3"
