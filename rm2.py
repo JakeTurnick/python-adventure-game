@@ -13,15 +13,28 @@ from time import sleep
 
 
 class rm2:
-    def __init__(self, key):
-        self.key = key
+    def __init__(self, main):
+        self.key = main.key
         self.batteries = False
         self.basket = False
+        self.life = main.life
+    def play_rm2(self):
+        while self.life == True:
+            self.play_market()
 
     def play_market(self):
         test_market = input("Would you like to play the market? (y/n) : \n")
+        test_market_keys = input("Would you like to increment keys? (y/n) : \n")
+        set_life_false = input("Would you like to set life to false? (y/n) : \n")
         if test_market.lower() == "y":
             self.play_room_two()
+        if test_market_keys.lower() == "y":
+            self.key += 1
+            return {"key": self.key, "life": self.life}
+        if set_life_false.lower() == "y":
+            self.life = False
+            print("you died")
+            #return {"key": self.key, "life": self.life}
         else:
             print("Oh no! \nYour stomach rumbles and you feel dehydrated. \nYou guess that can wait for later...\n")
             print(f"Keys: {self.key}")
@@ -45,7 +58,7 @@ class rm2:
             print("You notice there's some baskets available...\n")
             pick_up_basket = input("Do you want to pick up a basket? (y/n)\n")
             if pick_up_basket.lower() == "y":
-                print("You now have a BASKET. You can now ")
+                print("You now have a BASKET. You can now... ")
                 self.basket = True
                 self.aisle_or_stock()
             if pick_up_basket.lower() == "n":
@@ -90,8 +103,9 @@ class rm2:
                     print(
                         "Oh well...maybe next time you'll \nmake more interesting choices instead of \nrunning away from all of your problems...\n")
                     sleep(1)
-#!!!!!!!NEED TO END GAME HERE!!!!!!!!!!!!!!
                     print("GAME OVER")
+                    self.life == False
+                    return     
                 if leave_or_continue.lower() == "n":
                     print("Cool, you decided to take a look around")
                     self.aisle_or_stock()
@@ -108,5 +122,5 @@ class rm2:
             print("RM2: NO!? Jokes on you - you never had a choice")
 
 
-test_rm2 = rm2("some_key")
-# test_rm2.play_market()
+#test_rm2 = rm2("self")
+

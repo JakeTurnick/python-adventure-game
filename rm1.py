@@ -99,5 +99,5 @@ class rm1_class:
             #     print("RM1: Yes? Jokes on you - you never had a choice")
             # else:
             #     print("RM1: NO!? Jokes on you - you never had a choice")
-test_rm1 = rm1_class("clinic")
-test_rm1.play_room_one()
+#test_rm1 = rm1_class("clinic")
+#test_rm1.play_room_one()

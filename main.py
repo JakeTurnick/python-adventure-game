@@ -36,7 +36,14 @@ class Main_Game:
             # rm 1
             pass
         elif rm_choice == "2":
-            pass
+            print(f"You had {self.key} keys")
+            var = rm2.rm2(self).play_market()
+            print(var)
+            self.key = var["key"]
+            self.life = var["life"]
+            print(f"You now have {self.key} keys and are {self.life}")
+            if self.life == False:
+                print("You died")
         elif rm_choice == "3":
             # THIS WORKS! Make sure your room does 2 things if you win:
             # self.key += 1 // return self.key
