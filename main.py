@@ -41,7 +41,7 @@ class Main_Game:
                 self.life = var["life"]
                 print(f"You now have {self.key} keys and are {self.life}")
                 if self.life == False:
-                print("You died")
+                    print("You died")
             # rm 1
             pass
         elif rm_choice == "2":
@@ -57,6 +57,7 @@ class Main_Game:
             var = rm3.Garage_class(self).test_garage()
             self.key = var["key"]
             self.life = var["life"]
+            print(f"You now have {self.key} keys")
             if self.life == False:
                 print("You died")
         elif rm_choice == "test":
