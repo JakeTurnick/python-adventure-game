@@ -4,7 +4,6 @@
 # - collect items:
 # - clinic key - it's in an office
 # to get into the office, player needs to find screw driver and hammer to get into clinic office
-# survivor Dr Stephen Baker is alive and hurt. He's been stabbed by his nurse in his side.
 # the doctor put you on a quest to get a trauma kit in an exam room.
 # two nurses are in the builiding last he recalls. He is not sure where they are
 
@@ -137,6 +136,9 @@ class rm1_class:
                 self.clinic_key = True
                 self.clinic_front_office_dark()
         elif choice == "room":
+            print(
+                "It's hard to see around. You hear a some sort of thudding sound down the hall")
+            self.clinic_front_office_dark()
 
             # choice - investigate room- dark
 
