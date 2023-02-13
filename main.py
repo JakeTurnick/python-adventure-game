@@ -154,7 +154,7 @@ class Main_Game:
         if wait_or_walk in choose_wait_or_walk:
             if wait_or_walk == "WALK":
                 self.print_slow(
-                    ("You decide to walk to town...\n"), self.COLOR[0])
+                    ("You decide to walk to town...\nYou see three buildings in front of you... \na clinic, a market, and a garage...\n no one in sight...\n"), self.COLOR[0])
                 time.sleep(3)
             if wait_or_walk == "WAIT":
                 # IMPORTANT !! ADD OPTION TO END GAME HERE AFTER COMPLETE

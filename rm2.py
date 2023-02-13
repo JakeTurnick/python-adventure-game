@@ -8,7 +8,7 @@
 # scene: front desk 'back in five', aisles, stock room (attacked by crawler, finds batteries), office/break room
 # enemies: 'crawler'
 # description: shadow creature that stalks prey from the shadows
-
+import random
 from time import sleep
 
 class rm2:
@@ -111,16 +111,40 @@ class rm2:
                 print("Please choose either 'y' or 'n'")
 
     def investigate_room(self):
-        print("You decided to investigate the stock room...")
+        print("You decided to investigate the stock room...\nthe room is dark and very poorly lit... \nyou hear scratching behind you, \nbut can't figure out what's making the sound...no one is here. \n")
 
         while True:
-            shop_or_room = input("Do you want to investigate the room? (y/n)")
-            if shop_or_room.lower() == "y":
-                print("You chose to investigate the room ... ")
+            leave_room = input("Turn around? (y/n?)")
+            if leave_room.lower() == "n":
+                print("You chose to keep looking around the room... \n You see an old journal on the table")
                 break
-            elif shop_or_room.lower() == "n":
-                print("You chose to keep shopping ...")
-                break
+            elif leave_room.lower() == "y":
+                print("You chose to leave the room ...\n")
+                sleep(2)
+                print("You turn around and ...\n")
+                sleep(2)
+                print("You see a massive humanoid creature with razor-sharp teeth, \ndark-beady eyes and wide, gapping mouth...\n")
+                sleep(2)
+                print("It lets out an omnious growl...\n")
+                sleep(2)
+                print("And lunges for your throat...\n")
+                if self.basket == True:
+                    print("You blocked the creature's attack with the basket!!\n You throw it at the creature and it shrinks back into the shadows...\n You decide it's best to run back to the front of the store...\n")
+                    sleep(2)
+                    self.locate_key()
+                    break
+                    # print("You breathe a sigh of relief...that was close...") 
+                else:
+                    damage = random.randint(0, 30)
+                    if damage < 20:
+                        print("That was quick thinking! \n You blocked the creature's attack with a broom!\n The creature shrinks back into the shadows! \n Better get out quick! \n")
+                        self.locate_key()
+                        break
+                    else:
+                        print("The creature stares at you with it's beady eyes... \nit cuts off your escape and sinks it's teeth into you!\n In your last moments, you think about Linda... \nHow much you'll miss her...\n")
+                        print("Game over, nice try!\n")
+                        self.life = False
+                        return {"key": self.key, "life": self.life} 
             else:
                 print("Please choose either 'y' or 'n'")
 
@@ -137,4 +161,10 @@ class rm2:
                 break
             else:
                 print("Please choose either 'y' or 'n'")
+
+    def locate_key(self):
+        print("You stop to grab some batteries for your flash light and snacks for later")
+
+    def go_next(self):
+        print("You decided to leave the store...You passed the room sucessfully!")
 
