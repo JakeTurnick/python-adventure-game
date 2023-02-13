@@ -37,14 +37,14 @@ class Main_Game:
             while self.life == True:
                 print(f"You had {self.key} keys")
                 var = rm1.rm1_class(self).play_room_one()
-            # rm1_class(self).play_room_one()
-                # self.key = var["key"]
-                # self.life = var["life"]
+                rm1_class(self).play_room_one()
+                self.key = var["key"]
+                self.life = var["life"]
                 print(f"You now have {self.key} keys and are {self.life}")
                 if self.life == False:
                     print("You died")
             # rm 1
-            pass
+                pass
         elif rm_choice == "2":
             while self.life == True:
                 print(f"You had {self.key} keys")
