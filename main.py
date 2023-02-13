@@ -40,7 +40,7 @@ class Main_Game:
                 rm1_class(self).play_room_one()
                 self.key = var["key"]
                 self.life = var["life"]
-                print(f"You now have {self.key} keys and are {self.life}")
+                print(f"You now have {self.key} keys and life: {self.life}")
                 if self.life == False:
                     print("You died")
             # rm 1

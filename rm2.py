@@ -27,7 +27,7 @@ class rm2:
     def printslow(self, message, COLORS):
         for c in message:
             print(COLORS + c, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.001)
             print(Style.RESET_ALL, end='', flush=True)
 
     def play_rm2(self):
@@ -41,22 +41,22 @@ class rm2:
             if test_market.lower() == "y":
                 self.play_room_two()
 
-            test_market_keys = input("Would you like to increment keys? (y/n) : \n")
-            if test_market_keys.lower() == "y":
-                self.key += 1
+            #test_market_keys = input("Would you like to increment keys? (y/n) : \n")
+            #if test_market_keys.lower() == "y":
+            #    self.key += 1
                 #return {"key": self.key, "life": self.life}
 
-            set_life_false = input("Would you like to set life to false? (y/n) : \n")
-            if set_life_false.lower() == "y":
-                print("GAME OVER")
-                self.life = False
-                return {"key": self.key, "life": self.life}   
+            #set_life_false = input("Would you like to set life to false? (y/n) : \n")
+            #if set_life_false.lower() == "y":
+            #    print("GAME OVER")
+            #    self.life = False
+            #    return {"key": self.key, "life": self.life}   
 
             else:
                 print("Oh no! \nYour stomach rumbles and you feel dehydrated. \nYou guess that can wait for later...\n")
-                print(f"Keys: {self.key}")
+                #print(f"Keys: {self.key}")
                 #return self.key
-
+                #return 
 
     def play_room_two(self):
         
@@ -246,7 +246,7 @@ class rm2:
             sleep(1)
             self.printslow(("You try to run...but you're not fast enough!\n"), self.COLORS[0])
             sleep(1)
-            self.printslow(("GAME OVER, not lucky enough I guess... :("), self.COLORS[0])
+            self.printslow(("GAME OVER, not lucky enough I guess... :(\n"), self.COLORS[0])
             sleep(1)
             self.life = False
             return {"key": self.key, "life": self.life} 
