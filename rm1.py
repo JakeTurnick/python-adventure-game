@@ -34,11 +34,13 @@ class rm1_class:
             self.play_lobby()
         if choice == "no":
             self.take_to_test()
+            # teting function currently takes you to the end of game.
         # else:
             # if no, send player to main.py file play_main function
             # pass
 #
-# trigger to take to test area
+# trigger to take to test area: test area currently is the end of the game
+
 #
 
     def take_to_test(self):
@@ -316,6 +318,10 @@ class rm1_class:
     def test_mark(self):
 
         self.end_room_one()
+
+
+# end export key to main
+
 
     def end_room_one(self):
         self.key += 1
