@@ -64,13 +64,13 @@ class rm2:
             print("You notice there's some baskets available...\n")
             pick_up_basket = input("Do you want to pick up a basket? (y/n)\n")
             if pick_up_basket.lower() == "y":
-                print("You now have a BASKET. You can now... ")
+                print("You now have a BASKET. Might come in handy... ")
                 self.basket = True
                 self.aisle_or_stock()
             if pick_up_basket.lower() == "n":
                 self.aisle_or_stock()
         else:
-            print("You wait...and wait...\n Seems like no one is coming...")
+            print("You wait...and wait...\n Seems like no one is here...")
             leave_or_continue = input("Do want to leave? (y/n)\n")
             if leave_or_continue.lower() == "y":
                 print("Suddenly...\n")
@@ -91,7 +91,7 @@ class rm2:
                 self.life = False
                 return {"key": self.key, "life": self.life} 
             if leave_or_continue.lower() == "n":
-                print("Cool, you decided to take a look around...")
+                print("Cool, you decided to take a look around...\nThe shelves look pretty dark and empty.\n You touch one and notice a layer of dust left on your finger...\n")
                 self.aisle_or_stock()
 
     def aisle_or_stock(self):
@@ -149,22 +149,66 @@ class rm2:
                 print("Please choose either 'y' or 'n'")
 
     def keep_shopping(self):
-        print("You chose")
+        print("You chose to keep shopping...\nAs you walk down one of the snack aisles, \nyou notice a note next next to some snacks...\n")
+        print("By aisle and shelf, I do reside,\n")
+        print("In shadows deep, I do bide.\n")
+        print("A spark of life, a power bright,\n")
+        print("To help thee on thy way to night.\n")
+        print("The quiet whispers, they do tell,\n")
+        print("Where I do lie, in shadows dwell.\n")
+        print("Seek thou, but wisely, in thy quest,\n")
+        print("For I am found, when all is at rest.\n")
+        print("...what a weird note...\n")
 
         while True:
-            shop_or_room = input("Do you want to investigate the room? (y/n)")
-            if shop_or_room.lower() == "y":
-                print("You chose to investigate the room ... ")
+            inspect_shelves = input("Do you want to inspect the shelves? (y/n)")
+            if inspect_shelves.lower() == "y":
+                print("You chose to inspect the shelves ...\n You grab it and wiggle... \n Out pops... ")
+                print("...batteries...for your flashlight to change your tire!")
+                self.batteries = True
+                self.go_next()
                 break
-            elif shop_or_room.lower() == "n":
-                print("You chose to keep shopping ...")
-                break
+            elif inspect_shelves.lower() == "n":
+                print("Some weirdo must have left the note. \n")
+                print("Oh well... \n")
+                print("2 hours later...\n")
+                print("You're trying to change your tire in the dark...\n")
+                print("Would be nice to have some batteries right about now...\n")
+                print("You hear leaves rustling behind you...\n")
+                print("All of a sudden...a growl...from a BEAR!\n")
+                print("You try to run...but you're not fast enough!\n")
+                print("GAME OVER, should have taken the hint\n...this was an easy one! ;)")
+                self.life = False
+                return {"key": self.key, "life": self.life} 
             else:
                 print("Please choose either 'y' or 'n'")
 
     def locate_key(self):
-        print("You stop to grab some batteries for your flash light and snacks for later")
+        print("You quickly grab whatever you can off the shelves and make a run for it!")
+        get_lucky = random.randint(0, 30)
+        if get_lucky > 10: 
+            print("You see a note...something about... \nspark of life, a power bright,\nYou chose to inspect the shelves ...\n You grab it and wiggle... \n Out pops... ")
+            print("...batteries...for your flashlight to change your tire!") 
+            self.batteries = True 
+            self.go_next()
+        else:
+            print("You get out of the store ok...but...")
+            print("2 hours later...\n")
+            print("You're trying to change your tire in the dark...\n")
+            print("Would be nice to have some batteries right about now...\n")
+            print("You hear leaves rustling behind you...\n")
+            print("All of a sudden...a growl...from a BEAR!\n")
+            print("You try to run...but you're not fast enough!\n")
+            print("GAME OVER, not lucky enough I guess... :(")
+            self.life = False
+            return {"key": self.key, "life": self.life} 
 
     def go_next(self):
-        print("You decided to leave the store...You passed the room sucessfully!")
-
+        if self.batteries == True:
+            print("Well...that was weird...but...\n")
+            print("You leave the store...You passed the room sucessfully!")
+            self.key += 1
+            return {"key": self.key, "life": self.life} 
+        else:
+            print("Oops, something weird happened.\n")
+            print("Try again.\n")
