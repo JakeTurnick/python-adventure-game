@@ -33,7 +33,7 @@ class rm1_class:
             print("You enter the lobby of the clinic. You are looking for gauze to wrap your head wound and some pain killers \n")
             self.play_lobby()
         if choice == "no":
-            return
+            self.test_mark()
 
         # teting function currently takes you to the end of game.
         # else:
@@ -319,9 +319,8 @@ class rm1_class:
             print("You found the easteregg. You pull out a shotgun out of nowhwere and shoot her. You had one shot and you made it count. You safely walk out and completed your objective \n")
             self.end_room_one()
 
-    # def test_mark(self):
-
-    #     self.end_room_one()
+    def test_mark(self):
+        self.end_room_one()
 
 
 # end export key to main
@@ -335,7 +334,7 @@ class rm1_class:
     #     choice = input("Would you like to get another key? (y/n)")
     #     print(f"You now have {self.key} keys")
 
-    #     if choice.lower() == "y":
+    #     if choice.lower() == "y":d
     #         # print(f"RM3: You had {self.key} keys before")
     #         self.key += 1
     #         return {"key": self.key, "life": self.life}

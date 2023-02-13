@@ -43,6 +43,8 @@ class Main_Game:
                 print(f"You now have {self.key} keys and life: {self.life}")
                 if self.life == False:
                     print("You died")
+            while rm1.rm1_class(self).complete() == True:
+                self.test()
             # rm 1
                 pass
         elif rm_choice == "2":
@@ -195,7 +197,13 @@ class Main_Game:
     def end_room(self):
         pass
 
-    # if keys > 3:
+        if self.keys > 3:
+            print("You've collected all the parts needed to fix your car")
+            print("After your trials through the clinic, market, and garage, you're finally able to fix your car and get out of here.")
+            print("This towns gone crazy, and it's far too much. You're just one person, you make your way back to the your vehicle.")
+            print("By the time the radiator and your tire is fixed, the sun is beginning to set. You turn your car around and leave")
+            print(
+                "May God have mercy on your soul and everyones soul who was in that town...")
         # end function
 
 
