@@ -90,7 +90,6 @@ class rm2:
                 print("GAME OVER")
                 self.life = False
                 return {"key": self.key, "life": self.life} 
-
             if leave_or_continue.lower() == "n":
                 print("Cool, you decided to take a look around...")
                 self.aisle_or_stock()
@@ -98,14 +97,44 @@ class rm2:
     def aisle_or_stock(self):
         print("You start walking down the aisles when you notice an open door to what looks like a storage room...")
 
-        shop_or_room = input("Do you want to investigate the room or keep shopping for now (y/n)")
+        while True:
+            shop_or_room = input("Do you want to investigate the room? (y/n)")
+            if shop_or_room.lower() == "y":
+                print("You chose to investigate the room ... ")
+                self.investigate_room()
+                break
+            elif shop_or_room.lower() == "n":
+                print("You chose to keep shopping ...")
+                self.keep_shopping()
+                break
+            else:
+                print("Please choose either 'y' or 'n'")
 
-        if shop_or_room.lower() == "y":
-            print("RM2: Yes? Jokes on you - you never had a choice")
-        if shop_or_room.lower() == "n":
-            print("RM2: Yes? Jokes on you - you never had a choice")
-        else:
-            print("RM2: NO!? Jokes on you - you never had a choice")
+    def investigate_room(self):
+        print("You decided to investigate the stock room...")
 
+        while True:
+            shop_or_room = input("Do you want to investigate the room? (y/n)")
+            if shop_or_room.lower() == "y":
+                print("You chose to investigate the room ... ")
+                break
+            elif shop_or_room.lower() == "n":
+                print("You chose to keep shopping ...")
+                break
+            else:
+                print("Please choose either 'y' or 'n'")
 
+    def keep_shopping(self):
+        print("You chose")
+
+        while True:
+            shop_or_room = input("Do you want to investigate the room? (y/n)")
+            if shop_or_room.lower() == "y":
+                print("You chose to investigate the room ... ")
+                break
+            elif shop_or_room.lower() == "n":
+                print("You chose to keep shopping ...")
+                break
+            else:
+                print("Please choose either 'y' or 'n'")
 
