@@ -33,7 +33,7 @@ class Main_Game:
             rm_choice = input("select a room (1/2/3)\n")
 
         if rm_choice == "1":
-            rm1_class(self).test_room_one()
+            rm1_class(self).play_room_one()
             # rm 1
             pass
         elif rm_choice == "2":
