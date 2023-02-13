@@ -27,8 +27,8 @@ class Main_Game:
             print(Style.RESET_ALL, end='', flush=True)
 
     def test(self):
-        rm_choice = input("select a room (1/2/3)\n")
-        while rm_choice != "1" and rm_choice != "2" and rm_choice != "3":
+        rm_choice = input("select a room (1/2/3/test)\n")
+        while rm_choice != "1" and rm_choice != "2" and rm_choice != "3" and rm_choice != "test":
             # only if it's a choice we want
             rm_choice = input("select a room (1/2/3)\n")
 
@@ -54,10 +54,17 @@ class Main_Game:
                 if self.life == False:
                     print("You died")
         elif rm_choice == "3":
+            var = rm3.Garage_class(self).test_garage()
+            self.key = var["key"]
+            self.life = var["life"]
+            if self.life == False:
+                print("You died")
+        elif rm_choice == "test":
             # THIS WORKS! Make sure your room does 2 things if you win:
             # self.key += 1 // return self.key
             while self.life == True:
                 print(f"You had {self.key} keys")
+                # <-- check this function to better understand
                 var = rm3.Garage(self).play_room_three()
                 # Var is a dictionary with 2 keys(key & life) which are the values -
                 # returned from the play function (self.key, self.life)
@@ -85,10 +92,11 @@ class Main_Game:
             elif room_choice == "rm2":
                 rm2.rm2(self.key).play_market()  # imported
             else:  # room_choice == "rm3"
-                print(f"You had {self.key} keys")
-                self.key = rm3.Garage(self.key).play_room_three()
-                # returns new self.key value after victory
-                print(f"You now have {self.key} keys")
+                var = rm3.Garage(self).play()
+                # Var is a dictionary with 2 keys(key & life) which are the values -
+                # returned from the play function (self.key, self.life)
+                self.key = var["key"]
+                self.life = var["life"]
 
             # after each room - if statement to check if life == False & break
             # rm3(self).play
