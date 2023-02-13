@@ -156,7 +156,9 @@ class Main_Game:
                 # IMPORTANT !! ADD OPTION TO END GAME HERE AFTER COMPLETE
                 self.print_slow(
                     ("You decide to wait for help\nwaiting...\nwaiting...\nwaiting...\n...oh no...\na grizzly bear finds you and eats you! \nGAME OVER\n"), self.COLOR[0])
-                return
+                print("GAME OVER")
+                self.life = False
+                return {"key": self.key, "life": self.life} 
         else:
             self.print_slow(
                 ("Please choose 'WALK' or 'WAIT' to continue... \n"), self.COLOR[0])
