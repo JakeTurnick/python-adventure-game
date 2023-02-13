@@ -1,6 +1,7 @@
 # COUNTY MARKET
 # Items to find to pass
-# Batteries == KEY for rm2
+# !!!!!! Batteries == KEY for rm2 !!!!!
+# LINE 255:  def go_next(self) -> returns key to main.py
 # Snacks
 # Water
 # scene: front desk 'back in five', aisles, stock room (attacked by crawler, finds batteries), office/break room
