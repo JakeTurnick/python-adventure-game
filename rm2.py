@@ -9,7 +9,11 @@
 # enemies: 'crawler'
 # description: shadow creature that stalks prey from the shadows
 import random
+import time
 from time import sleep
+from colorama import init, Fore, Style
+init(autoreset=True)
+
 
 class rm2:
     def __init__(self, main):
@@ -17,6 +21,15 @@ class rm2:
         self.batteries = False
         self.basket = False
         self.life = main.life
+
+
+    COLORS = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+
+    def printslow(self, message, COLORS):
+        for c in message:
+            print(COLORS + c, end='', flush=True)
+            time.sleep(0.0001)
+            print(Style.RESET_ALL, end='', flush=True)
 
     def play_rm2(self):
         while self.life == True:
@@ -47,89 +60,91 @@ class rm2:
 
 
     def play_room_two(self):
-        print("You walk down a dusty road to a building with the sign \n'County Market' on the front.\nYou notice the sign is worn. \nLooks like some of the letters need to be replaced...")
+        
+        self.printslow(("You walk down a dusty road to a building with the sign \n'County Market' on the front.\nYou notice the sign is worn. \nLooks like some of the letters need to be replaced..."), self.COLORS[0])
         sleep(3)
-        print("Your stomach rumbles again loudly... \nYour mouth is starting to feel parched...\nYou decide now is a good time to pick up some snacks, \nwater and maybe batteries for your flashlight...?\n")
+        self.printslow(("Your stomach rumbles again loudly... \nYour mouth is starting to feel parched...\nYou decide now is a good time to pick up some snacks, \nwater and maybe batteries for your flashlight...?\n"), self.COLORS[0])
         sleep(3)
-        print("The door jingles and creaks open... \nand take a look around...\n")
+        self.printslow(("The door jingles and creaks open... \nand take a look around...\n"), self.COLORS[0])
         sleep(3)
-        print("The inside is dimly-lit... \nthe front counter and shelves look pretty dusty\nThere's a sign on the counter that reads: \n 'Back In Five' \n")
+        self.printslow(("The inside is dimly-lit... \nthe front counter and shelves look pretty dusty\nThere's a sign on the counter that reads: \n 'Back In Five' \n"), self.COLORS[0])
         sleep(3)
+
         self.explore_market()
 
     def explore_market(self):
         choose_explore_or_die = input("Would you like to shop around? (y/n)")
         if choose_explore_or_die.lower() == "y":
-            print("You decide to look around the store... \n")
-            print("You notice there's some baskets available...\n")
+            self.printslow(("You decide to look around the store... \n"), self.COLORS[0])
+            self.printslow(("You notice there's some baskets available...\n"), self.COLORS[0])
             pick_up_basket = input("Do you want to pick up a basket? (y/n)\n")
             if pick_up_basket.lower() == "y":
-                print("You now have a BASKET. Might come in handy... ")
+                self.printslow(("You now have a BASKET. Might come in handy... \n"), self.COLORS[4])
                 self.basket = True
                 self.aisle_or_stock()
             if pick_up_basket.lower() == "n":
                 self.aisle_or_stock()
         else:
-            print("You wait...and wait...\n Seems like no one is here...")
+            self.printslow(("You wait...and wait...\n Seems like no one is here..."), self.COLORS[0])
             leave_or_continue = input("Do want to leave? (y/n)\n")
             if leave_or_continue.lower() == "y":
-                print("Suddenly...\n")
+                self.printslow(("Suddenly...\n"), self.COLORS[0])
                 sleep(1)
-                print(
-                    "You hear scratching noises...and a low, deep growl in the darkness behind you...\n")
+                self.printslow((
+                    "You hear scratching noises...and a low, deep growl in the darkness behind you...\n"), self.COLORS[1])
                 sleep(2)
-                print("A twisted, frightening, humanoid creature lunges out of the shadows at you...\nit's face distorted with \n eyes gaunt and gleaming with ravenous hunger\n")
+                self.printslow(("A twisted, frightening, humanoid creature lunges out of the shadows at you...\nit's face distorted with \n eyes gaunt and gleaming with ravenous hunger\n"), self.COLORS[1])
                 sleep(1)
-                print("As the creature sinks its razer-sharp teeth \ninto the exposed flesh of your neck, \nand your life flashes before your eyes... \n")
+                self.printslow(("As the creature sinks its razer-sharp teeth \ninto the exposed flesh of your neck, \nand your life flashes before your eyes... \n"), self.COLORS[1])
                 sleep(1)
-                print("You think of Linda... and how \nchoosing to run away led to your demise...\nhow she probably figured you'd end up like this one day\n")
+                self.printslow(("You think of Linda... and how \nchoosing to run away led to your demise...\nhow she probably figured you'd end up like this one day\n"), self.COLORS[1])
                 sleep(1)
-                print(
-                    "Oh well...maybe next time you'll \nmake more interesting choices instead of \nrunning away from all of your problems...\n")
+                self.printslow((
+                    "Oh well...maybe next time you'll \nmake more interesting choices instead of \nrunning away from all of your problems...\n"), self.COLORS[1])
                 sleep(1)
-                print("GAME OVER")
+                self.printslow(("GAME OVER"), self.COLORS[1])
                 self.life = False
                 return {"key": self.key, "life": self.life} 
             if leave_or_continue.lower() == "n":
-                print("Cool, you decided to take a look around...\nThe shelves look pretty dark and empty.\n You touch one and notice a layer of dust left on your finger...\n")
+                self.printslow(("Cool, you decided to take a look around...\nThe shelves look pretty dark and empty.\n You touch one and notice a layer of dust left on your finger...\n"), self.COLORS[0])
                 self.aisle_or_stock()
 
     def aisle_or_stock(self):
-        print("You start walking down the aisles when you notice an open door to what looks like a storage room...")
+        self.printslow(("You start walking down the aisles when you notice an open door \nto what looks like a storage room...\n"), self.COLORS[0])
 
         while True:
             shop_or_room = input("Do you want to investigate the room? (y/n)")
             if shop_or_room.lower() == "y":
-                print("You chose to investigate the room ... ")
+                self.printslow(("You chose to investigate the room ... \n"), self.COLORS[0])
                 self.investigate_room()
                 break
             elif shop_or_room.lower() == "n":
-                print("You chose to keep shopping ...")
+                self.printslow(("You chose to keep shopping ...\n"), self.COLORS[0])
                 self.keep_shopping()
                 break
             else:
-                print("Please choose either 'y' or 'n'")
+                self.printslow(("Please choose either 'y' or 'n'\n"), self.COLORS[4])
 
     def investigate_room(self):
-        print("You decided to investigate the stock room...\nthe room is dark and very poorly lit... \nyou hear scratching behind you, \nbut can't figure out what's making the sound...no one is here. \n")
+        self.printslow(("The room is dark and very poorly lit... \nyou hear scratching behind you, \nbut can't figure out what's making the sound...no one is here. \n"), self.COLORS[0])
 
         while True:
             leave_room = input("Turn around? (y/n?)")
             if leave_room.lower() == "n":
-                print("You chose to keep looking around the room... \n You see an old journal on the table")
+                self.printslow(("You chose to keep looking around the room... \n You see an old journal on the table"), self.COLORS[0])
                 break
             elif leave_room.lower() == "y":
-                print("You chose to leave the room ...\n")
+                self.printslow(("You chose to leave the room ...\n"), self.COLORS[0])
                 sleep(2)
-                print("You turn around and ...\n")
+                self.printslow(("You turn around and ...\n"), self.COLORS[0])
                 sleep(2)
-                print("You see a massive humanoid creature with razor-sharp teeth, \ndark-beady eyes and wide, gapping mouth...\n")
+                self.printslow(("You see a massive humanoid creature with razor-sharp teeth, \ndark-beady eyes and wide, gapping mouth...\n"), self.COLORS[1])
                 sleep(2)
-                print("It lets out an omnious growl...\n")
+                self.printslow(("It lets out an omnious growl...\n"), self.COLORS[1])
                 sleep(2)
-                print("And lunges for your throat...\n")
+                self.printslow(("And lunges for your throat...\n"), self.COLORS[1])
                 if self.basket == True:
-                    print("You blocked the creature's attack with the basket!!\n You throw it at the creature and it shrinks back into the shadows...\n You decide it's best to run back to the front of the store...\n")
+                    self.printslow(("You blocked the creature's attack with the basket!!\n You throw it at the creature and it shrinks back into the shadows...\n You decide it's best to run back to the front of the store...\n"), self.COLORS[0])
                     sleep(2)
                     self.locate_key()
                     break
@@ -137,78 +152,116 @@ class rm2:
                 else:
                     damage = random.randint(0, 30)
                     if damage < 20:
-                        print("That was quick thinking! \n You blocked the creature's attack with a broom!\n The creature shrinks back into the shadows! \n Better get out quick! \n")
+                        self.printslow(("That was quick thinking! \n You blocked the creature's attack with a broom!\n The creature shrinks back into the shadows! \n Better get out quick! \n"), self.COLORS[0])
                         self.locate_key()
                         break
                     else:
-                        print("The creature stares at you with it's beady eyes... \nit cuts off your escape and sinks it's teeth into you!\n In your last moments, you think about Linda... \nHow much you'll miss her...\n")
-                        print("Game over, nice try!\n")
+                        self.printslow(("The creature stares at you with it's beady eyes... \nit cuts off your escape and sinks it's teeth into you!\n In your last moments, you think about Linda... \nHow much you'll miss her...\n"), self.COLORS[1])
+                        self.printslow(("Game over, nice try!\n"), self.COLORS[1])
                         self.life = False
                         return {"key": self.key, "life": self.life} 
             else:
-                print("Please choose either 'y' or 'n'")
+                self.printslow(("Please choose either 'y' or 'n'"), self.COLORS[4])
 
     def keep_shopping(self):
-        print("You chose to keep shopping...\nAs you walk down one of the snack aisles, \nyou notice a note next next to some snacks...\n")
-        print("By aisle and shelf, I do reside,\n")
-        print("In shadows deep, I do bide.\n")
-        print("A spark of life, a power bright,\n")
-        print("To help thee on thy way to night.\n")
-        print("The quiet whispers, they do tell,\n")
-        print("Where I do lie, in shadows dwell.\n")
-        print("Seek thou, but wisely, in thy quest,\n")
-        print("For I am found, when all is at rest.\n")
-        print("...what a weird note...\n")
-
+        self.printslow(("As you walk down one of the snack aisles, \nyou notice a note next next to some snacks...\n"), self.COLORS[3])
+        sleep(2)
+        self.printslow(("By aisle and shelf, I do reside,\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("In shadows deep, I do bide.\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("A spark of life, a power bright,\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("To help thee on thy way to night.\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("The quiet whispers, they do tell,\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("Where I do lie, in shadows dwell.\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("Seek thou, but wisely, in thy quest,\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("For I am found, when all is at rest.\n"), self.COLORS[0])
+        sleep(1)
+        self.printslow(("...what a weird note...\n"), self.COLORS[0])
+        sleep(3)
         while True:
             inspect_shelves = input("Do you want to inspect the shelves? (y/n)")
+            sleep(3)
             if inspect_shelves.lower() == "y":
-                print("You chose to inspect the shelves ...\n You grab it and wiggle... \n Out pops... ")
-                print("...batteries...for your flashlight to change your tire!")
+                self.printslow(("You chose to inspect the shelves ...\n You grab it and wiggle... \n Out pops... "), self.COLORS[0])
+                sleep(2)
+                self.printslow(("...batteries...for your flashlight to change your tire!"), self.COLORS[0])
+                sleep(2)
                 self.batteries = True
                 self.go_next()
                 break
             elif inspect_shelves.lower() == "n":
-                print("Some weirdo must have left the note. \n")
-                print("Oh well... \n")
-                print("2 hours later...\n")
-                print("You're trying to change your tire in the dark...\n")
-                print("Would be nice to have some batteries right about now...\n")
-                print("You hear leaves rustling behind you...\n")
-                print("All of a sudden...a growl...from a BEAR!\n")
-                print("You try to run...but you're not fast enough!\n")
-                print("GAME OVER, should have taken the hint\n...this was an easy one! ;)")
+                self.printslow(("Some weirdo must have left the note. \n"), self.COLORS[0])
+                sleep(2)
+                self.printslow(("Oh well... \n"), self.COLORS[0])
+                sleep(3)
+                self.printslow(("2 hours later...\n"), self.COLORS[0])
+                sleep(1)
+                self.printslow(("You're trying to change your tire in the dark...\n"), self.COLORS[0])
+                sleep(1)
+                self.printslow(("Would be nice to have some batteries right about now...\n"), self.COLORS[0])
+                sleep(1)
+                self.printslow(("You hear leaves rustling behind you...\n"), self.COLORS[0])
+                sleep(1)
+                self.printslow(("All of a sudden...a growl...from a BEAR!\n"), self.COLORS[0])
+                sleep(1)
+                self.printslow(("You try to run...but you're not fast enough!\n"), self.COLORS[0])
+                sleep(1)
+                self.printslow(("GAME OVER, should have taken the hint\n...this was an easy one! ;)"), self.COLORS[0])
+                sleep(1)
                 self.life = False
                 return {"key": self.key, "life": self.life} 
             else:
-                print("Please choose either 'y' or 'n'")
+                self.printslow(("Please choose either 'y' or 'n'"), self.COLORS[4])
+                sleep(2)
 
     def locate_key(self):
-        print("You quickly grab whatever you can off the shelves and make a run for it!")
+        sleep(3)
+        self.printslow(("You quickly grab whatever you can off the shelves and make a run for it!"), self.COLORS[0])
+        sleep(1)
         get_lucky = random.randint(0, 30)
         if get_lucky > 10: 
-            print("You see a note...something about... \nspark of life, a power bright,\nYou chose to inspect the shelves ...\n You grab it and wiggle... \n Out pops... ")
-            print("...batteries...for your flashlight to change your tire!") 
+            self.printslow(("You see a note...something about... \nspark of life, a power bright,\nYou chose to inspect the shelves ...\n You grab it and wiggle... \n Out pops...\n"), self.COLORS[0])
+            sleep(2)
+            self.printslow(("...batteries...for your flashlight to change your tire!\n") , self.COLORS[3])
+            sleep(3)
             self.batteries = True 
             self.go_next()
         else:
-            print("You get out of the store ok...but...")
-            print("2 hours later...\n")
-            print("You're trying to change your tire in the dark...\n")
-            print("Would be nice to have some batteries right about now...\n")
-            print("You hear leaves rustling behind you...\n")
-            print("All of a sudden...a growl...from a BEAR!\n")
-            print("You try to run...but you're not fast enough!\n")
-            print("GAME OVER, not lucky enough I guess... :(")
+            self.printslow(("You get out of the store ok...but..."), self.COLORS[0])
+            sleep(3)
+            self.printslow(("2 hours later...\n"), self.COLORS[0])
+            sleep(1)
+            self.printslow(("You're trying to change your tire in the dark...\n"), self.COLORS[0])
+            sleep(1)
+            self.printslow(("Would be nice to have some batteries right about now...\n"), self.COLORS[0])
+            sleep(1)
+            self.printslow(("You hear leaves rustling behind you...\n"), self.COLORS[0])
+            sleep(1)
+            self.printslow(("All of a sudden...a growl...from a BEAR!\n"), self.COLORS[0])
+            sleep(1)
+            self.printslow(("You try to run...but you're not fast enough!\n"), self.COLORS[0])
+            sleep(1)
+            self.printslow(("GAME OVER, not lucky enough I guess... :("), self.COLORS[0])
+            sleep(1)
             self.life = False
             return {"key": self.key, "life": self.life} 
 
     def go_next(self):
         if self.batteries == True:
-            print("Well...that was weird...but...\n")
-            print("You leave the store...You passed the room sucessfully!")
+            self.printslow(("Well...that was weird...but...\n"), self.COLORS[0])
+            sleep(3)
+            self.printslow(("You leave the store...\nYou passed the room sucessfully!"), self.COLORS[0])
+            sleep(3)
             self.key += 1
             return {"key": self.key, "life": self.life} 
         else:
-            print("Oops, something weird happened.\n")
-            print("Try again.\n")
+            self.printslow(("Oops, something weird happened.\n"), self.COLORS[1])
+            sleep(1)
+            self.printslow(("Try again.\n"), self.COLORS[1])
+            sleep(1)
