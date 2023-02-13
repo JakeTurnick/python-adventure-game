@@ -33,7 +33,15 @@ class Main_Game:
             rm_choice = input("select a room (1/2/3)\n")
 
         if rm_choice == "1":
-            rm1_class(self).play_room_one()
+            while self.life == True:
+                print(f"You had {self.key} keys")
+                var = rm1_class(self).play_room_one()
+               # rm1_class(self).play_room_one()
+                self.key = var["key"]
+                self.life = var["life"]
+                print(f"You now have {self.key} keys and are {self.life}")
+                if self.life == False:
+                print("You died")
             # rm 1
             pass
         elif rm_choice == "2":
@@ -122,8 +130,8 @@ class Main_Game:
                     ("Please type 'MYSELF' or 'CAR' to continue... \n"), self.COLOR[0])
                 time.sleep(3)
 
-#player tries to call for help, unable to:
-    #def start_choice(self): 
+# player tries to call for help, unable to:
+    # def start_choice(self):
         call_for_help = []
         while len(call_for_help) < 2:
             choose_call_for_help = input(
@@ -147,7 +155,7 @@ class Main_Game:
         self.print_slow(
             ("No one answers the phone... \nYou notice the sun is setting, it's starting to get foggy... \n You also notice a small town in the distance... \n "), self.COLOR[0])
 
-#Player chooses to WALK to town or WAIT for help and die
+# Player chooses to WALK to town or WAIT for help and die
         choose_wait_or_walk = ["WALK", "WAIT"]
         wait_or_walk = input(
             f"Do you want to WALK to town or WAIT for help?\n").upper()
@@ -162,18 +170,18 @@ class Main_Game:
                     ("You decide to wait for help\nwaiting...\nwaiting...\nwaiting...\n...oh no...\na grizzly bear finds you and eats you! \nGAME OVER\n"), self.COLOR[0])
                 print("GAME OVER")
                 self.life = False
-                return {"key": self.key, "life": self.life} 
+                return {"key": self.key, "life": self.life}
         else:
             self.print_slow(
                 ("Please choose 'WALK' or 'WAIT' to continue... \n"), self.COLOR[0])
             time.sleep(3)
 
-#Player chooses between 3rms or BUILDINGS
-    
-    #...
+# Player chooses between 3rms or BUILDINGS
 
-#Player obtains keys from all 3rms 
-#Game ends here 
+    # ...
+
+# Player obtains keys from all 3rms
+# Game ends here
     def end_room(self):
         pass
 
