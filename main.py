@@ -87,17 +87,16 @@ class Main_Game:
             if self.keys > 3:
                 self.end_room()
 
-    # intro text
+# intro text
     def print_intro(self):
         self.print_slow(
             ("You slowly come too... \nyou've been unconsious for some time... \nHow long, you're not sure...  \n"), self.COLOR[0])
         time.sleep(3)
-
         self.print_slow(
             ("You look around... \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control... \nIt seems a tree limb pierced the windshield, cracking it... \n"), self.COLOR[0])
         time.sleep(3)
 
-        # list of starting choices:
+# intro/choose between inspecting yourself and the car:
         car_or_myself = []
         # run loop while len (length of list) < 2
         while len(car_or_myself) < 2:
@@ -123,7 +122,8 @@ class Main_Game:
                     ("Please type 'MYSELF' or 'CAR' to continue... \n"), self.COLOR[0])
                 time.sleep(3)
 
-        # call for help:
+#player tries to call for help, unable to:
+    #def start_choice(self): 
         call_for_help = []
         while len(call_for_help) < 2:
             choose_call_for_help = input(
@@ -147,6 +147,7 @@ class Main_Game:
         self.print_slow(
             ("No one answers the phone... \nYou notice the sun is setting, it's starting to get foggy... \n You also notice a small town in the distance... \n "), self.COLOR[0])
 
+#Player chooses to WALK to town or WAIT for help and die
         choose_wait_or_walk = ["WALK", "WAIT"]
         wait_or_walk = input(
             f"Do you want to WALK to town or WAIT for help?\n").upper()
@@ -167,6 +168,12 @@ class Main_Game:
                 ("Please choose 'WALK' or 'WAIT' to continue... \n"), self.COLOR[0])
             time.sleep(3)
 
+#Player chooses between 3rms or BUILDINGS
+    
+    #...
+
+#Player obtains keys from all 3rms 
+#Game ends here 
     def end_room(self):
         pass
 
