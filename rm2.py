@@ -1,5 +1,3 @@
-# from main import COLOR, print_slow
-
 # COUNTY MARKET
 # Items to find to pass
 # Batteries == KEY for rm2
@@ -8,6 +6,7 @@
 # scene: front desk 'back in five', aisles, stock room (attacked by crawler, finds batteries), office/break room
 # enemies: 'crawler'
 # description: shadow creature that stalks prey from the shadows
+
 import random
 import time
 from time import sleep
@@ -22,13 +21,12 @@ class rm2:
         self.basket = False
         self.life = main.life
 
-
     COLORS = [Fore.GREEN, Fore.RED, Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
 
     def printslow(self, message, COLORS):
         for c in message:
             print(COLORS + c, end='', flush=True)
-            time.sleep(0.0001)
+            time.sleep(0.1)
             print(Style.RESET_ALL, end='', flush=True)
 
     def play_rm2(self):
@@ -252,6 +250,7 @@ class rm2:
             self.life = False
             return {"key": self.key, "life": self.life} 
 
+#export keys
     def go_next(self):
         if self.batteries == True:
             self.printslow(("Well...that was weird...but...\n"), self.COLORS[0])
