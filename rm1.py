@@ -23,19 +23,21 @@ class rm1_class:
         self.life = main.life
         self.clinic_key = False
         self.screwdriver = False
-        self.lighter = False
+        self.flashlight = False
 
         # key passed in from Main_Game creating new rm1_class
   # this initializes the game
 
     def play_room_one(self):
         print("Would you like to enter the clinic?")
-        print("Choose yes or no: ", end="")
-        choice = input()
+        print("Enter 'yes' or 'no': ", end="")
+        choice = input().lower()
+        while choice not in ['yes', 'no']:
+            print("Invalid input. Please enter 'yes' or 'no': ", end="")
+            choice = input().lower()
         if choice == "yes":
-            print("\n You enter the lobby of the clinic. You are looking for gauze to wrap your head wound and some pain killers \n")
+            print("You enter the lobby of the clinic. You are looking for gauze to wrap your head wound and some pain killers \n")
             self.play_lobby()
-
         else:
             # if no, send player to main.py file play_main function
             pass
@@ -43,142 +45,164 @@ class rm1_class:
     # You enter the lobby
 
     def play_lobby(self):
-        print("\n The lights are off. The lobby looks like a mess. Some chairs have been thrown about and a waste toppled over. There is a receptionist desk connected to the lobby, and a door into the clinic on your right. The office doesn't seem to be accessible from the lobby.")
-        print("Check door or desk?: ", end="")
-        choice = input()
-        if choice.lower() == "door":
-            print(
-                "\n You go to the door, It's locked. You need to find a key or maybe pick the lock?")
-            print("Do you want to try to open the door?", end="")
-            choice = input()
+        print("The lights are off. The lobby looks like a mess. Some chairs have been thrown about and a trash bin toppled over. There is a receptionist desk connected to the lobby, and a door into the clinic on your right. The office doesn't seem to be accessible from the lobby. \n")
+        print("Enter 'door' or 'desk': ", end="")
+        choice = input().lower()
+        while choice not in ['door', 'desk']:
+            print("Invalid input. Please enter 'door' or 'desk': ", end="")
+            choice = input().lower()
+        if choice == "door":
+            print("You go to the door, It's locked. You need a key")
+            print("Do you want to try to open the door? Enter 'yes' or 'no': ", end="")
+            choice = input().lower()
+            while choice not in ['yes', 'no']:
+                print("Invalid input. Please enter 'yes' or 'no': ", end="")
+                choice = input().lower()
             if self.clinic_key == True:
                 print("You opened the clinic door \n")
                 self.clinic_hallway()
-
             else:
                 print(
-                    "You don't have a key or a way to pick the lock yet. You turn around.")
+                    "You don't have a key or a way to pick the lock yet. You turn around.\n")
                 self.play_lobby()
-
-        if choice.lower() == "desk":
+        elif choice == "desk":
             print(
-                "You go stand in front of the receptionist desk. You could climb over and search the office.")
-            print("Do you climb over? yes or no?: ", end="")
-            choice = input()
-
-            if choice.lower() == "yes":
+                "You go stand in front of the front desk. You could climb over and search the office. \n")
+            print("Do you climb over? Enter 'yes' or 'no': ", end="")
+            choice = input().lower()
+            while choice not in ['yes', 'no']:
+                print("Invalid input. Please enter 'yes' or 'no': ", end="")
+                choice = input().lower()
+            if choice == "yes":
                 self.play_clinic_front_office()
-
             else:
-                choice.lower() == "no"
-                print("You turn around.")
+                print("You turn around. \n")
                 self.play_lobby()
 
     # office scene
 
     def play_clinic_front_office(self):
-        print("You climb ontop of the desk. The office is dimly lit and what little light you see is coming from the mostly closed blinds on the walls. The office looks messy and there are signs of a struggle. There is a door connecting the office to the hallway on your right")
+        print("You climb ontop of the desk. The office is dimly lit and what little light you see is coming from the mostly closed blinds on the walls. The office looks messy and there are signs of a struggle. There is a door connecting the office to the hallway on your right\n")
         # choice
-        print("look around or open blinds?", end="")
-        choice = input()
+        print("look around or open blinds? ", end="")
+        while choice not in ['look around', 'open blinds']:
+            print("Invalid input. Please enter 'look around' or 'open blinds': ", end="")
+            choice = input().lower()
         if choice == "look around":
             print(
-                "Its very dark. You can't make out much... maybe you could find a candle or open the blinds")
+                "In the low light you can't make out much... maybe you could find a flashlight or open the blinds")
             self.clinic_front_office_dark()
-        else:
-            print("You make your way to the wall and open the blinds. Light floods the room. You can see things clearly now")
+        elif choice == "open blinds":
+            print(
+                "You make your way to the wall and open the blinds. Light floods the room. You can see things clearly now")
             self.clinic_front_office_light()
 
     def clinic_front_office_dark(self):
-        print("As you look around the office you bump into one of the desks. A small desk lamp falls and hits the floor with a thud. Hopefully no one heard")
+        print("As you look around the office you bump into one of the desks. A small desk lamp falls and hits the floor with a thud. Hopefully no one heard. You don't see much of interest.")
         # choice
-        print("Would you like to search the desks or investigate room?", end="")
-        choice = input()
+        print(
+            "Would you like to search the desks or the room? Choose desks or room: ", end="")
+        while choice not in ['desks', 'room']:
+            print("Invalid input: please choose 'desks' or 'room'", end="")
+            choice = input().lower()
 
         # choice - search office desks
-        if choice == "search desks":
+        if choice == "desks":
             print(
-                "There are two desks in the office. The receptionist desk and the nurses desk.")
+                "There are two desks in the office. The front desk and the nurses desk. \n")
 
             print(
-                "Which would you like to search? receptionist desk or nurses desk?", end="")
-            if choice == "receptionist desk":
-                print("You searched the receptionist desk. You find a lighter!")
-                self.lighter = True
+                "Which would you like to search: front desk or nurses desk?", end="")
+            while choice not in ['front desk', 'nurses desk']:
+                print("Invalid input: please choose 'front desk' or 'nurses desk' ")
+                choice = input().lower()
+            if choice == "front desk":
+                print("You searched the front desk. You find a flashlight!")
+                self.flashlight = True
                 self.clinic_front_office_dark()
             if choice == "nurse desk":
                 print(
                     "You search the nurses desk. You find a key to the clinic lobby door!")
-                print("You hear the creeking of a door opening near you...")
+                print("You hear the creeking of a door opening near you... \n")
                 self.clinic_key = True
                 self.clinic_front_office_dark()
-        else:
+        elif choice == "room":
 
             # choice - investigate room- dark
 
-            if choice == "investigate room":
-                #
-                #
-                # create exit conditions due to death
-                #
-                #
-                while self.life == True:
+            #
+            #
+            # create exit conditions due to death
+            #
+            #
+            while self.life == True:
+                print(
+                    "You start to move around the dimly lit room. You notice the office door slowly opens and a nurse looks at you. In the darkness is a figure staring at you. After a second, you notice it's a nurse. \n")
+                print(
+                    "Ask her for help? Yes or no:", end="")
+                while choice not in ['yes', 'no']:
+                    choice = input().lower
+                if choice == "yes":
                     print(
-                        "You start to move around the dimly lit room. You notice the office door slowly opens and a nurse looks at you. In the darkness is a figure staring at you. After a second, you notice it's a nurse.")
-                    print(
-                        "Ask her for help? Yes or no:", end="")
-                    choice = input()
-                    if choice == "yes":
-                        print(
-                            "You step forward excitingly toward her for help and before you can ask a question")
-                        print("The nurse lunges at you. She closes the distance between you two at an alarming rate. Before you can even react she sticks a syringe in your chest and starts laughing. You have been injected with a heavy sedative. You died.")
-                        self.life = False
-                        break
-                    if choice == "no":
-                        print("You hesitate and take a step backwards. Something feels off about the nurse. She notices you and starts sprinting at a full pace towards you. You turn to jump over the receptionist desk but she catches you by the collar of your shirt. She stabs a syringe into your neck and starts laughing. You have been in injeced with a heavy sedative. You died.")
-                        self.life = False
-                        break
+                        "You step forward excitingly toward her for help and before you can ask a question")
+                    print("The nurse lunges at you. She closes the distance between you two at an alarming rate. Before you can even react she sticks a syringe in your chest and starts laughing. You have been injected with a heavy sedative. You died. \n")
+                    self.life = False
+                    break
+                if choice == "no":
+                    print("You hesitate and take a step backwards. Something feels off about the nurse. She notices you and starts sprinting at a full pace towards you. You turn to jump over the front desk but she catches you by the collar of your shirt. She stabs a syringe into your neck and starts laughing. You have been in injeced with a heavy sedative. You died. \n")
+                    self.life = False
+                    break
 
     def clinic_front_office_light(self):
-        print("As you look around you notice signs of a struggle and a blood stain on the carpet.")
+        print("As you look around you notice signs of a struggle and a blood stain on the carpet. \n")
         print("Would you like to search the desks or the office? Choose office or desks:", end="")
-        choice = input()
-        if choice == "search desks":
+        while choice not in ['office', 'desks']:
+            print("Invalid input: please enter 'office' or 'desks'")
+            choice = input()
+        if choice == "desks":
             print(
-                "There are two desks in the office. The receptionist desk and the nurses desk.")
+                "There are two desks in the office. The front desk and the nurses desk. \n")
 
             print(
-                "Which would you like to search? receptionist desk or nurses desk?", end="")
-            if choice == "receptionist desk":
-                print("You searched the receptionist desk. You find a lighter!")
-                self.lighter = True
+                "Which would you like to search: front or nurses desk? ", end="")
+            choice = input()
+            if choice == "front desk":
+                print("You searched the front desk. You find a flashlight!")
+                self.flashlight = True
                 self.clinic_front_office_light()
             if choice == "nurse desk":
                 print(
-                    "You search the nurses desk. You find a key to the clinic lobby door!")
+                    "You search the nurses desk. You find a key to the clinic lobby door! \n")
                 self.clinic_key = True
                 self.clinic_front_office_light()
-        else:
-            if choice == "investigate":
-                print("The office is a mess. There is blood on the ground near the office door. Patient records and memos strewn everywhere. Some sort of fight happened here. A newspaper article with a big red circle around ")
-                print("")
 
-    # def lookaround_office_front_desk(self):
+        elif choice == "office":
+            print("The office is a mess. There is blood on the ground near the office door. Patient records and memos strewn everywhere. Some sort of fight happened here. A newspaper article with a big red circle around ")
 
-    # #open blinds
-    # if choice == "open blinds" or choice == "blinds":
-    #     print("You open the blinds and light illuminates the room. The empty streets in front of you give you chills. Dark shadows recede and you can see the office more clearly. Chairs have been knocked over, a vase had been knocked over and shattered on the floor. Various papers are scattered around the floor.")
-    #     print("The room layout consists of the front office desk for check in and check out. Two other desks in the center of the room for other nurses. Directly in front of you are filing cabinets ")
+    def news_or_blood(self):
+        print("investigate newspaper or blood? Or go back?", end="")
+        choice = input()
 
-    #     def clinic_floor_lights_on(self):
-    #         pass
+        if choice == "newspaper":
+            print("You see a newspaper titled, 'SCIENTIST MAKE BREAKTHROUGH DISCOVERY IN LOCAL LAB', circled in red with a note 'this is why i hear the whispers...... I AM NOT CRAZY!!! ITS THEM!'")
+            self.news_or_blood()
 
-    #     def clinic_floor_lights_off(self):
-    #         pass
-        # look around in dark
+        if choice == "blood":
+            print("You find a pool of blood on the floor near the office door. It looks like someone was dragged into the door. Near the door you find a bloody screwdriver. You pick up the screwdriver.")
+            self.screwdriver = True
+            self.news_or_blood()
+
+        if choice == "go back":
+            self.front_desk()
+
+    def front_desk(self):
+        print("You are by the front desk. Jump over to the lobby or stay here? Choose lobby or stay", end="")
+        choice = input()
+        if choice == "lobby":
+            self.play_lobby()
 
     def clinic_hallway(self):
-        print("The hallway in front of you it pitch black.")
+        print("The hallway in front of you it pitch black. \n")
 
     # def test_room_one(self):
     #     choice = input("Would you like to get another key? (y/n)")
