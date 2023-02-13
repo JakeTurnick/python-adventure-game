@@ -9,6 +9,7 @@
 # two nurses are in the builiding last he recalls. He is not sure where they are
 
 from time import sleep
+# from main import Main_Game
 
 
 class rm1_class:
@@ -33,18 +34,19 @@ class rm1_class:
             print("You enter the lobby of the clinic. You are looking for gauze to wrap your head wound and some pain killers \n")
             self.play_lobby()
         if choice == "no":
-            self.take_to_test()
-            # teting function currently takes you to the end of game.
+            return
+
+        # teting function currently takes you to the end of game.
         # else:
-            # if no, send player to main.py file play_main function
-            # pass
+        # if no, send player to main.py file play_main function
+        # pass
 #
 # trigger to take to test area: test area currently is the end of the game
 
 #
 
-    def take_to_test(self):
-        self.test_mark()
+    # def take_to_test(self):
+    #     self.test_mark()
     # You enter the lobby
 
     def play_lobby(self):
@@ -315,13 +317,12 @@ class rm1_class:
             print("You found the easteregg. You pull out a shotgun out of nowhwere and shoot her. You had one shot and you made it count. You safely walk out and completed your objective \n")
             self.end_room_one()
 
-    def test_mark(self):
+    # def test_mark(self):
 
-        self.end_room_one()
+    #     self.end_room_one()
 
 
 # end export key to main
-
 
     def end_room_one(self):
         self.key += 1

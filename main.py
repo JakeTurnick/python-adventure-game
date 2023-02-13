@@ -1,5 +1,6 @@
 import rm3
 import rm2
+import rm1
 from rm1 import rm1_class
 import time
 from colorama import init, Fore, Style
@@ -35,10 +36,10 @@ class Main_Game:
         if rm_choice == "1":
             while self.life == True:
                 print(f"You had {self.key} keys")
-                var = rm1_class(self).play_room_one()
-               # rm1_class(self).play_room_one()
-                self.key = var["key"]
-                self.life = var["life"]
+                var = rm1.rm1_class(self).play_room_one()
+            # rm1_class(self).play_room_one()
+                # self.key = var["key"]
+                # self.life = var["life"]
                 print(f"You now have {self.key} keys and are {self.life}")
                 if self.life == False:
                     print("You died")
