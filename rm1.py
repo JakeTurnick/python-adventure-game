@@ -34,7 +34,7 @@ class rm1_class:
             self.play_lobby()
         if choice == "no":
             self.test_mark()
-
+            # return
         # teting function currently takes you to the end of game.
         # else:
         # if no, send player to main.py file play_main function
@@ -314,21 +314,26 @@ class rm1_class:
             print("RUN RUN RUN! RUN FOR YOUR LIFE!!! \n")
             print("The door is just ahead, you decide to turn around and throw your flashlight at her while opening the door. You catch a glimpse of her scarred ragged face. There doesn't seem to be anything human left behind her eyes \n")
             print("You escape! And you made it out alive. It doesn't seem like she's chasing you anymore as you make your way out of the lobby of the clinic and back on the streets.\n")
+
             self.end_room_one()
         if choice == "shoot":
             print("You found the easteregg. You pull out a shotgun out of nowhwere and shoot her. You had one shot and you made it count. You safely walk out and completed your objective \n")
+
             self.end_room_one()
 
     def test_mark(self):
         self.end_room_one()
 
-
-# end export key to main
+    # end export key to main
 
     def end_room_one(self):
-        self.key += 1
-        print(f"You now have {self.key} keys")
-        return {"key": self.key, "life": self.life}
+        win = True
+        if win == True:
+            self.key += 1
+            # print(f"You now have {self.key} keys")
+            return {"key": self.key, "life": self.life}
+        else:
+            print("Redirect not successful")
 
     # def test_room_one(self):
     #     choice = input("Would you like to get another key? (y/n)")
