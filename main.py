@@ -57,51 +57,87 @@ class Main_Game:
                 print(f"You now have {self.key} keys and are {self.life}")
                 if self.life == False:
                     print("You died")
-        elif rm_choice == "3":
-            var = rm3.Garage_class(self).play()
-            self.key = var["key"]
-            self.life = var["life"]
-            print(f"You now have {self.key} keys")
-            if self.life == False:
-                print("You died")
-        elif rm_choice == "test":
-            # THIS WORKS! Make sure your room does 2 things if you win:
-            # self.key += 1 // return self.key
-            while self.life == True:
-                print(f"You had {self.key} keys")
-                # <-- check this function to better understand
-                var = rm3.Garage(self).play_room_three()
-                # Var is a dictionary with 2 keys(key & life) which are the values -
-                # returned from the play function (self.key, self.life)
+            elif rm_choice == "3":
+                var = rm3.Garage_class(self).play()
                 self.key = var["key"]
                 self.life = var["life"]
                 print(f"You now have {self.key} keys")
-            if self.life == False:
-                print("You died")
+                if self.life == False:
+                    print("You died")
+            elif rm_choice == "test":
+                # THIS WORKS! Make sure your room does 2 things if you win:
+                # self.key += 1 // return self.key
+                while self.life == True:
+                    print(f"You had {self.key} keys")
+                    # <-- check this function to better understand
+                    var = rm3.Garage(self).play_room_three()
+                    # Var is a dictionary with 2 keys(key & life) which are the values -
+                    # returned from the play function (self.key, self.life)
+                    self.key = var["key"]
+                    self.life = var["life"]
+                    print(f"You now have {self.key} keys")
+                if self.life == False:
+                    print("You died")
+
+    def new_test(self):
+        while self.life == True:
+            room_choice = input(
+                "Which would you like to enter? (clinic/market/garage)\n")
+
+            while room_choice.lower() != "clinic" and room_choice.lower() != "market" and room_choice.lower() != "garage":
+                room_choice = input(
+                    "Which room would you like to enter? (rm1/rm2/rm3)\n")
+
+            if room_choice.lower() == "clinic":
+                # print(f"You now have {self.key} keys")
+                result = rm1_class(self).play_room_one()  # imported
+                # instanciate rm1 with key from Main_Game & call play room
+                self.key = result["key"]
+                self.life = result["life"]
+                # print(f"You now have {self.key} keys")
+            elif room_choice.lower() == "market":
+                result = rm2.rm2(self).play_market()  # imported
+                self.key = result["key"]
+                self.life = result["life"]
+            elif room_choice.lower() == "garage":  # room_choice == "rm3"
+                result = rm3.Garage_class(self).play()
+                # Var is a dictionary with 2 keys(key & life) which are the values -
+                # returned from the play function (self.key, self.life)
+                self.key = result["key"]
+                self.life = result["life"]
+
+            # after each room - if statement to check if life == False & break
+            # rm3(self).play
+        if self.keys > 3:
+            self.end_room()
 
     def play_main(self):
         self.print_intro()
         while self.life == True:
             room_choice = input(
-                "Which room would you like to enter? (rm1/rm2/rm3)\n")
+                "Which would you like to enter? (clinic/market/garage)\n")
 
-            while room_choice != "rm1" and room_choice != "rm2" and room_choice != "rm3":
+            while room_choice.lower() != "clinic" and room_choice.lower() != "market" and room_choice.lower() != "garage":
                 room_choice = input(
                     "Which room would you like to enter? (rm1/rm2/rm3)\n")
 
-            if room_choice == "rm1":
+            if room_choice.lower() == "clinic":
                 print(f"You now have {self.key} keys")
-                rm1_class(self.key).play_room_one()  # imported
+                result = rm1_class(self).play_room_one()  # imported
                 # instanciate rm1 with key from Main_Game & call play room
+                self.key = result["key"]
+                self.life = result["life"]
                 print(f"You now have {self.key} keys")
-            elif room_choice == "rm2":
-                rm2.rm2(self.key).play_market()  # imported
-            else:  # room_choice == "rm3"
-                var = rm3.Garage(self).play()
+            elif room_choice.lower() == "market":
+                result = rm2.rm2(self).play_market()  # imported
+                self.key = result["key"]
+                self.life = result["life"]
+            elif room_choice.lower() == "garage":  # room_choice == "rm3"
+                result = rm3.Garage_class(self).play()
                 # Var is a dictionary with 2 keys(key & life) which are the values -
                 # returned from the play function (self.key, self.life)
-                self.key = var["key"]
-                self.life = var["life"]
+                self.key = result["key"]
+                self.life = result["life"]
 
             # after each room - if statement to check if life == False & break
             # rm3(self).play
@@ -112,10 +148,10 @@ class Main_Game:
     def print_intro(self):
         self.print_slow(
             ("You slowly come too... \nyou've been unconsious for some time... \nHow long, you're not sure...  \n"), self.COLOR[0])
-        time.sleep(3)
+        time.sleep(1)
         self.print_slow(
             ("You look around... \nYou're in your car but you've wrecked. \nAll you remember is you heard a 'pop' and you lost control... \nIt seems a tree limb pierced the windshield, cracking it... \n"), self.COLOR[0])
-        time.sleep(3)
+        time.sleep(1)
 
 # intro/choose between inspecting yourself and the car:
         car_or_myself = []
@@ -127,21 +163,21 @@ class Main_Game:
                 if choose_start in car_or_myself:
                     self.print_slow(
                         ("You have already selected " + choose_start + ".\n"), self.COLOR[0])
-                    time.sleep(3)
+                    time.sleep(1)
                 else:
                     car_or_myself.append(choose_start)
                     if choose_start == "MYSELF":
                         self.print_slow(
                             ("Your head hurts, you believe you have a concusion. \nYour thoughts are foggy and it's difficult to complete a coherent thought. \nYou have a small gash on your forehead. The bleeding has almost stopped. \nYou should find a gauze to wrap around the wound...\n"), self.COLOR[0])
-                        time.sleep(3)
+                        time.sleep(1)
                     elif choose_start == "CAR":
                         self.print_slow(
                             ("You chose car...LOADING \n"), self.COLOR[0])
-                        time.sleep(3)
+                        time.sleep(1)
             else:
                 self.print_slow(
                     ("Please type 'MYSELF' or 'CAR' to continue... \n"), self.COLOR[0])
-                time.sleep(3)
+                time.sleep(1)
 
 # player tries to call for help, unable to:
     # def start_choice(self):
@@ -153,7 +189,7 @@ class Main_Game:
                 if choose_call_for_help in call_for_help:
                     self.print_slow(
                         ("You have already selected " + choose_call_for_help + ".\n"), self.COLOR[0])
-                    time.sleep(3)
+                    time.sleep(2)
                 else:
                     call_for_help.append(choose_call_for_help)
                     if choose_call_for_help == "LINDA":
@@ -163,7 +199,7 @@ class Main_Game:
             else:
                 self.print_slow(
                     ("Please type '911' or 'Linda' to continue... \n"), self.COLOR[0])
-                time.sleep(3)
+                time.sleep(2)
 
         self.print_slow(
             ("No one answers the phone... \nYou notice the sun is setting, it's starting to get foggy... \n You also notice a small town in the distance... \n "), self.COLOR[0])
@@ -176,7 +212,7 @@ class Main_Game:
             if wait_or_walk == "WALK":
                 self.print_slow(
                     ("You decide to walk to town...\nYou see three buildings in front of you... \na clinic, a market, and a garage...\n no one in sight...\n"), self.COLOR[0])
-                time.sleep(3)
+                time.sleep(2)
             if wait_or_walk == "WAIT":
                 # IMPORTANT !! ADD OPTION TO END GAME HERE AFTER COMPLETE
                 self.print_slow(
@@ -209,5 +245,5 @@ class Main_Game:
 
 
 new_game = Main_Game()
-new_game.test()
+new_game.new_test()
 # new_game.play_main()
