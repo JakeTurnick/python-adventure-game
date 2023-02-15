@@ -28,27 +28,29 @@ class Main_Game:
             print(Style.RESET_ALL, end='', flush=True)
 
     def test(self):
-        rm_choice = input("select a room (1/2/3/test)\n")
-        while rm_choice != "1" and rm_choice != "2" and rm_choice != "3" and rm_choice != "test":
-            # only if it's a choice we want
-            rm_choice = input("select a room (1/2/3)\n")
+        while self.life == True:
+            rm_choice = input("select a room (1/2/3/test)\n")
+            while rm_choice != "1" and rm_choice != "2" and rm_choice != "3" and rm_choice != "test":
+                # only if it's a choice we want
+                rm_choice = input("select a room (1/2/3)\n")
 
-        if rm_choice == "1":
-            while self.life == True:
-                print(f"You had {self.key} keys")
-                var = rm1.rm1_class(self).play_room_one()
-                rm1_class(self).play_room_one()
-                #self.key = var["key"]
-                #self.life = var["life"]
-                print(f"You now have {self.key} keys and life: {self.life}")
-                if self.life == False:
-                    print("You died")
-            while rm1.rm1_class(self).complete() == True:
-                self.test()
-            # rm 1
+            if rm_choice == "1":
+                while self.life == True:
+                    print(f"You had {self.key} keys")
+                    var = rm1.rm1_class(self).play_room_one()
+                    rm1_class(self).play_room_one()
+                    # self.key = var["key"]
+                    # self.life = var["life"]
+                    print(
+                        f"You now have {self.key} keys and life: {self.life}")
+                    if self.life == False:
+                        print("You died")
+                while rm1.rm1_class(self).complete() == True:
+                    self.test()
+                # rm 1
 
-        elif rm_choice == "2":
-            while self.life == True:
+            elif rm_choice == "2":
+
                 print(f"You had {self.key} keys")
                 var = rm2.rm2(self).play_market()
                 self.key = var["key"]
@@ -56,28 +58,28 @@ class Main_Game:
                 print(f"You now have {self.key} keys and are {self.life}")
                 if self.life == False:
                     print("You died")
-                    
-        elif rm_choice == "3":
-            var = rm3.Garage_class(self).test_garage()
-            self.key = var["key"]
-            self.life = var["life"]
-            print(f"You now have {self.key} keys")
-            if self.life == False:
-                print("You died")
-        elif rm_choice == "test":
-            # THIS WORKS! Make sure your room does 2 things if you win:
-            # self.key += 1 // return self.key
-            while self.life == True:
-                print(f"You had {self.key} keys")
-                # <-- check this function to better understand
-                var = rm3.Garage(self).play_room_three()
-                # Var is a dictionary with 2 keys(key & life) which are the values -
-                # returned from the play function (self.key, self.life)
+
+            elif rm_choice == "3":
+                var = rm3.Garage_class(self).test_garage()
                 self.key = var["key"]
                 self.life = var["life"]
                 print(f"You now have {self.key} keys")
-            if self.life == False:
-                print("You died")
+                if self.life == False:
+                    print("You died")
+            elif rm_choice == "test":
+                # THIS WORKS! Make sure your room does 2 things if you win:
+                # self.key += 1 // return self.key
+                while self.life == True:
+                    print(f"You had {self.key} keys")
+                    # <-- check this function to better understand
+                    var = rm3.Garage(self).play_room_three()
+                    # Var is a dictionary with 2 keys(key & life) which are the values -
+                    # returned from the play function (self.key, self.life)
+                    self.key = var["key"]
+                    self.life = var["life"]
+                    print(f"You now have {self.key} keys")
+                if self.life == False:
+                    print("You died")
 
     def play_main(self):
         self.print_intro()

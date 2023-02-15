@@ -35,26 +35,27 @@ class rm2:
             self.play_market()
 
     def play_market(self):
-        while self.life == True:    
-            test_market = input("Would you like to play the market? (y/n) : \n")
-            if test_market.lower() == "y":
-                self.play_room_two()
+        #while self.life == True:    
+        test_market = input("Would you like to play the market? (y/n) : \n")
+        if test_market.lower() == "y":
+            self.play_room_two()
+            return {"key": self.key, "life": self.life} 
 
-            test_market_keys = input("Would you like to increment keys? (y/n) : \n")
-            if test_market_keys.lower() == "y":
-                self.key += 1
-                return {"key": self.key, "life": self.life}
+            # test_market_keys = input("Would you like to increment keys? (y/n) : \n")
+            # if test_market_keys.lower() == "y":
+            #     self.key += 1
+            #     return {"key": self.key, "life": self.life}
 
-            set_life_false = input("Would you like to set life to false? (y/n) : \n")
-            if set_life_false.lower() == "y":
-                print("GAME OVER")
-                self.life = False
-                return {"key": self.key, "life": self.life}   
+            # set_life_false = input("Would you like to set life to false? (y/n) : \n")
+            # if set_life_false.lower() == "y":
+            #     print("GAME OVER")
+            #     self.life = False
+            #     return {"key": self.key, "life": self.life}   
 
-            else:
-                print("Oh no! \nYour stomach rumbles and you feel dehydrated. \nYou guess that can wait for later...\n")
-                #print(f"Keys: {self.key}")
-                #return self.key
+            # else:
+            #     print("Oh no! \nYour stomach rumbles and you feel dehydrated. \nYou guess that can wait for later...\n")
+            #     #print(f"Keys: {self.key}")
+            #     #return self.key
                 #return 
 
     def play_room_two(self):
@@ -229,7 +230,8 @@ class rm2:
             self.printslow(("...batteries...for your flashlight to change your tire!\n") , self.COLORS[3])
             sleep(3)
             self.batteries = True 
-            self.go_next()
+            var = self.go_next()
+            print(var)
         else:
             self.printslow(("You get out of the store ok...but..."), self.COLORS[0])
             sleep(3)
@@ -258,7 +260,7 @@ class rm2:
             self.printslow(("You leave the store...\nYou passed the room sucessfully!"), self.COLORS[0])
             sleep(3)
             self.key += 1
-            return {"key": self.key, "life": self.life} 
+          
         else:
             self.printslow(("Oops, something weird happened.\n"), self.COLORS[1])
             sleep(1)
