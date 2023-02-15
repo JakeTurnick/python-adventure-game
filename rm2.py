@@ -35,22 +35,21 @@ class rm2:
             self.play_market()
 
     def play_market(self):
-        while self.life == True:
-                    
+        while self.life == True:    
             test_market = input("Would you like to play the market? (y/n) : \n")
             if test_market.lower() == "y":
                 self.play_room_two()
 
-            #test_market_keys = input("Would you like to increment keys? (y/n) : \n")
-            #if test_market_keys.lower() == "y":
-            #    self.key += 1
-                #return {"key": self.key, "life": self.life}
+            test_market_keys = input("Would you like to increment keys? (y/n) : \n")
+            if test_market_keys.lower() == "y":
+                self.key += 1
+                return {"key": self.key, "life": self.life}
 
-            #set_life_false = input("Would you like to set life to false? (y/n) : \n")
-            #if set_life_false.lower() == "y":
-            #    print("GAME OVER")
-            #    self.life = False
-            #    return {"key": self.key, "life": self.life}   
+            set_life_false = input("Would you like to set life to false? (y/n) : \n")
+            if set_life_false.lower() == "y":
+                print("GAME OVER")
+                self.life = False
+                return {"key": self.key, "life": self.life}   
 
             else:
                 print("Oh no! \nYour stomach rumbles and you feel dehydrated. \nYou guess that can wait for later...\n")

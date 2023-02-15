@@ -38,15 +38,15 @@ class Main_Game:
                 print(f"You had {self.key} keys")
                 var = rm1.rm1_class(self).play_room_one()
                 rm1_class(self).play_room_one()
-                self.key = var["key"]
-                self.life = var["life"]
+                #self.key = var["key"]
+                #self.life = var["life"]
                 print(f"You now have {self.key} keys and life: {self.life}")
                 if self.life == False:
                     print("You died")
             while rm1.rm1_class(self).complete() == True:
                 self.test()
             # rm 1
-                pass
+
         elif rm_choice == "2":
             while self.life == True:
                 print(f"You had {self.key} keys")
@@ -56,6 +56,7 @@ class Main_Game:
                 print(f"You now have {self.key} keys and are {self.life}")
                 if self.life == False:
                     print("You died")
+                    
         elif rm_choice == "3":
             var = rm3.Garage_class(self).test_garage()
             self.key = var["key"]
