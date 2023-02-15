@@ -32,8 +32,10 @@ class rm1_class:
         if choice == "yes":
             print("You enter the lobby of the clinic. You are looking for gauze to wrap your head wound and some pain killers \n")
             self.play_lobby()
+            return {"key": self.key, "life": self.life}
         if choice == "no":
             self.test_mark()
+            return {"key": self.key, "life": self.life}
             # return
         # teting function currently takes you to the end of game.
         # else:
@@ -327,13 +329,10 @@ class rm1_class:
     # end export key to main
 
     def end_room_one(self):
-        win = True
-        if win == True:
-            self.key += 1
-            # print(f"You now have {self.key} keys")
-            return {"key": self.key, "life": self.life}
-        else:
-            print("Redirect not successful")
+
+        self.key += 1
+
+        # print(f"You now have {self.key} keys")
 
     # def test_room_one(self):
     #     choice = input("Would you like to get another key? (y/n)")
