@@ -16,6 +16,7 @@ class Garage_class:
         # main variables
         self.key = main.key
         self.life = main.life
+        self.win = False
         # garage key items
         self.flash_light = False
         self.car_key = False
@@ -47,9 +48,9 @@ class Garage_class:
         self.life = False
 
     def play(self):
-        while self.life == True:
-
-            self = self.entrance()
+        self.entrance()
+        if self.win == True:
+            return {"key": self.key, "life": self.life}
 
     def entrance(self):
         print(
@@ -96,16 +97,15 @@ class Garage_class:
         elif scan_entrance.lower() == "garage":  # scan_entrance == garage
             print("With no fear, you plunge yourself into the dark garage")
             self.garage_intro()
-            return self
+
         # after counter
         if self.flash_light == True:
             print("You use flashlight to help you see in the large garage")
             self.garage_intro()
-            return self
+
         else:  # scan_entrance == garage
             print("With no fear, you plunge yourself into the dark garage")
             self.garage_intro()
-            return self
 
     def garage_intro(self):
         if self.flash_light == True:
@@ -137,34 +137,37 @@ class Garage_class:
             room_choice = input(
                 "What do you explore? (\"garage\" \"office\" \"storage\") \n")
         if room_choice.lower() == "garage":
-            if self.flash_light == True:
-                print(
-                    "You walk around the garage, it feels as if life suddenly stopped...")
-                print(
-                    "Cars are still lifted to be worked on, the occasional oil puddle is present... but nothing looks put away...")
-                print(
-                    "A tire pile! You approach hoping to find a replacement for your car")
-                print(
-                    ". . . tires... but no wrench to install them... better keep looking")
-                self.check_car()
-                return
+            if self.car_encounter == False:
+                if self.flash_light == True:
+                    print(
+                        "You walk around the garage, it feels as if life suddenly stopped...")
+                    print(
+                        "Cars are still lifted to be worked on, the occasional oil puddle is present... but nothing looks put away...")
+                    print(
+                        "A tire pile! You approach hoping to find a replacement for your car")
+                    print(
+                        ". . . tires... but no wrench to install them... better keep looking")
+                    self.check_car()
+                    return
 
-            else:  # flash_light == False
-                print(
-                    "You hug the outside wall of the garage... You hear strange sounds coming from it's large rolling doors")
-                print(
-                    "The sound of a struggle is growing louder as you creep to the back of the garage")
-                print("""
-                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                !! You tumble over something !!
-                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                """)
-                print(". . . Tires!?")
-                print(
-                    "You feel a large pile of tires in front of you! The bolts are locked in")
-                print("I should find some kind of wrench")
+                else:  # flash_light == False
+                    print(
+                        "You hug the outside wall of the garage... You hear strange sounds coming from it's large rolling doors")
+                    print(
+                        "The sound of a struggle is growing louder as you creep to the back of the garage")
+                    print("""
+                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    !! You tumble over something !!
+                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    """)
+                    print(". . . Tires!?")
+                    print(
+                        "You feel a large pile of tires in front of you! The bolts are locked in")
+                    print("I should find some kind of wrench")
+                    self.check_car()
+                    return
+            elif self.car_encounter == True:
                 self.check_car()
-                return
 
         elif room_choice.lower() == "office":
             self.office()
@@ -187,7 +190,8 @@ class Garage_class:
                         "nothing of use appears to be on the ground, you try to open the car but it's locked")
                     print(
                         "peering in with eyes cupped to the window & flashing held up you look inside")
-                    print("A socket wrench on the seat! I should find a key-")
+                    print(
+                        "A socket wrench on the seat! The door is locked, I should find a key-")
                     print("""
                     !@#!@#!@#!@#!@#!@#!@#!@#
                     !@# RRRWAAAAAUURRRGG !@#
@@ -200,7 +204,7 @@ class Garage_class:
                         "What do you explore? (\"office\" \"storage\") \n")
                     while room_choice.lower() != "garage" and room_choice.lower() != "office" and room_choice.lower() != "storage":
                         room_choice = input(
-                            "What do you explore? (\"office\" \"storage\" \"hey\") \n")
+                            "What do you explore? (\"office\" \"storage\") \n")
                     if room_choice.lower() == "office":
                         self.office()
                         return
@@ -216,11 +220,142 @@ class Garage_class:
                         self.socket_wrench = True
                         print("You get the wrench, but not unscathed")
                         self.end()
+                    elif self.crowbar == True:
+                        print(
+                            "You unlock the door... crowbar in hand ready for whatever comes at you")
+                        print("... it's ... smiling at you?")
+                        print("The creature leaps at you!")
+                        print(
+                            "but the crowbar prevents it from reaching you or blocking your path the the socket wrench")
+                        print(
+                            "You take the wrench, slam the door and bolt away from the car")
+                        self.socket_wrench = True
+                        self.end()
+            elif self.flash_light == False:
+                if self.car_key == False:
+                    print(
+                        "you bump into a lowered car with tools scattered around it, maybe I'll find a wrench around you")
+                    print(
+                        "nothing of use appears to be on the ground, you try to open the car but it's locked")
+                    print(
+                        "peering in with eyes cupped to the window")
+                    print(
+                        "as your eyes adjust you see a socket wrench on the seat! I should find a key-")
+                    print("""
+                    !@#!@#!@#!@#!@#!@#!@#!@#
+                    !@# RRRWAAAAAUURRRGG !@#
+                    !@#!@#!@#!@#!@#!@#!@#!@#
+                    """)
+                    print("SOMETHING LEAPS AT YOU FROM INSIDE THE CAR")
+                    print(
+                        "... it's blocked by the window but continues to struggle")
+                    print("a strange fluid coats the inside of the window")
+                    room_choice = input(
+                        "What do you explore? (\"office\" \"storage\") \n")
+                    while room_choice.lower() != "garage" and room_choice.lower() != "office" and room_choice.lower() != "storage":
+                        room_choice = input(
+                            "What do you explore? (\"office\" \"storage\") \n")
+                    if room_choice.lower() == "office":
+                        self.office()
+                        return
+                    elif room_choice.lower() == "storage":
+                        self.storage()
+                        return
+                elif self.car_key == True:
+                    if self.crowbar == False:
+                        print(
+                            "Without a weapon you tap the glass on the opposite side to get the creatures attention")
+                        print(
+                            "running to the other side you rush to unlock the door and get the wrench")
+                        self.socket_wrench = True
+                        print("You get the wrench, but not unscathed")
+                        self.end()
+                    elif self.crowbar == True:
+                        print(
+                            "You unlock the door... crowbar in hand ready for whatever comes at you")
+                        print("... it's ... smiling at you?")
+                        print("The creature leaps at you!")
+                        print(
+                            "but the crowbar prevents it from reaching you or blocking your path the the socket wrench")
+                        print(
+                            "You take the wrench, slam the door and bolt away from the car")
+                        self.socket_wrench = True
+                        self.end()
+        elif self.car_encounter == True:
+            if self.flash_light == True:
+                if self.car_key == True:
+                    if self.crowbar == True:
+                        print(
+                            "You approach the sounds of struggle, muffled behind car windows")
+                        print(
+                            "you insert the car key into the door... The beast makes a noise as if it knowns")
+                        print(
+                            "You rip the door open, shove the crowbar in, feeling the weight of the beast trying to jump at you")
+                        print(
+                            "With the beast held back you grab the socket wrench, slam the door closed and hope to never experience that again")
+                        self.socket_wrench = True
+                        self.end()
+                    elif self.crowbar == False:
+                        print(
+                            "You approach the sounds of struggle, muffled behind car windows")
+                        print(
+                            "you insert the car key into the door... The beast makes a noise as if it knows")
+                        print(
+                            "You rip the door open, and leap for the wrench before the beast can get to you")
+                        self.socket_wrench = True
+                        print("You get the wrench, but not unscathed")
+                        self.end()
+                elif self.car_key == False:
+                    print("I don't have the key to unlock the car")
+                    room_choice = input(
+                        "What do you explore? (\"office\" \"storage\") \n")
+                    while room_choice.lower() != "garage" and room_choice.lower() != "office" and room_choice.lower() != "storage":
+                        room_choice = input(
+                            "What do you explore? (\"office\" \"storage\") \n")
+                    if room_choice.lower() == "office":
+                        self.office()
+                        return
+                    elif room_choice.lower() == "storage":
+                        self.storage()
+                        return
+            elif self.flash_light == False:
+                if self.car_key == True:
+                    if self.crowbar == True:
+                        print(
+                            "You approach the sounds of struggle, muffled behind car windows")
+                        print(
+                            "you insert the car key into the door... The beast makes a noise as if it knowns")
+                        print(
+                            "You rip the door open, shove the crowbar in, feeling the weight of the beast trying to jump at you")
+                        print(
+                            "With the beast held back you grab the socket wrench, slam the door closed and hope to never experience that again")
+                        self.socket_wrench = True
+                        self.end()
+                    elif self.crowbar == False:
+                        print(
+                            "You approach the sounds of struggle, muffled behind car windows")
+                        print(
+                            "you insert the car key into the door... The beast makes a noise as if it knows")
+                        print(
+                            "You rip the door open, and leap for the wrench before the beast can get to you")
+                        self.socket_wrench = True
+                        print("You get the wrench, but not unscathed")
+                        self.end()
+                elif self.car_key == False:
+                    print("I don't have the key to unlock the car")
+                    room_choice = input(
+                        "What do you explore? (\"office\" \"storage\") \n")
+                    while room_choice.lower() != "garage" and room_choice.lower() != "office" and room_choice.lower() != "storage":
+                        room_choice = input(
+                            "What do you explore? (\"office\" \"storage\") \n")
+                    if room_choice.lower() == "office":
+                        self.office()
+                        return
+                    elif room_choice.lower() == "storage":
+                        self.storage()
+                        return
 
-            else:
-                pass
-        else:
-            pass  # if self.car_encounter == True:
+              # if self.car_encounter == True:
         # if self.car_encounter == True: skip to getting wrench
 
     def office(self):
@@ -286,9 +421,10 @@ class Garage_class:
                     else:
                         self.storage()
                         stay = False
-                        return self
+                        return
                 elif office_choice.lower() == "garage":
                     self.garage()
+                    return
             elif self.flash_light == False:
                 print("... the silence is deafening")
                 print(
@@ -296,11 +432,11 @@ class Garage_class:
                 print(
                     "as you walk towards it you notice a door with the word: \"Storage\" ")
                 office_choice = input(
-                    "What do you check? (\"Large desk\" \"Storage\" \"Garage\") \n")
-                while office_choice.lower() != "large desk" and office_choice.lower() != "storage" and office_choice.lower() != "garage":
+                    "What do you check? (\"Desk\" \"Storage\" \"Garage\") \n")
+                while office_choice.lower() != "desk" and office_choice.lower() != "storage" and office_choice.lower() != "garage":
                     office_choice = input(
-                        "What do you check? (\"Large desk\" \"Storage\" \"Garage\") \n")
-                if office_choice.lower() == "large desk":
+                        "What do you check? (\"Desk\" \"Storage\" \"Garage\") \n")
+                if office_choice.lower() == "desk":
                     if self.car_key == True:
                         print(
                             "You feel your time would be better spent elsewhere")
@@ -354,6 +490,7 @@ class Garage_class:
                         return
                 elif office_choice.lower() == "garage":
                     self.garage()
+                    return
 
     def storage(self):
         while self.crowbar == False:
@@ -369,10 +506,33 @@ class Garage_class:
                     if self.car_encounter == True:
                         print("Looks like this will hold whatever that was back")
                         self.crowbar = True
+                        room_choice = input(
+                            "What do you explore? (\"office\" \"garage\") \n")
+                        while room_choice.lower() != "garage" and room_choice.lower() != "office" and room_choice.lower() != "storage":
+                            room_choice = input(
+                                "What do you explore? (\"office\" \"storage\") \n")
+                        if room_choice.lower() == "office":
+                            self.office()
+                            return
+                        elif room_choice.lower() == "garage":
+                            self.garage()
+                            return
                     else:
                         print(
                             "A handy tool, or weapon, depending on which half of life you're in")
                         self.crowbar = True
+                        room_choice = input(
+                            "What do you explore? (\"office\" \"garage\") \n")
+                        while room_choice.lower() != "garage" and room_choice.lower() != "office" and room_choice.lower() != "storage":
+                            room_choice = input(
+                                "What do you explore? (\"office\" \"storage\") \n")
+                        if room_choice.lower() == "office":
+                            self.office()
+                            return
+                        elif room_choice.lower() == "garage":
+                            self.garage()
+                            return
+
             elif self.flash_light == False:
                 print("You swing the door open and wait . . .")
                 print("... not a sound, you take a step in")
@@ -409,7 +569,7 @@ class Garage_class:
                     fof = input("(\"fight\" \"flight\" ")
                     while fof.lower() != "fight" and fof.lower() != "flight":
                         fof = input("(\"fight\" \"flight\" ")
-                    if fof == "fight":
+                    if fof.lower() == "fight":
                         print(
                             "adrenaline courses through your viens - whatever that is sounds like its where you entered (across the room) ")
                         print(
@@ -421,9 +581,20 @@ class Garage_class:
                         print(
                             "THE SHELF COMES TOPPLING DOWN IN FRONT OF YOU, HAVING A KNOCK ON AFFECT")
                         print(". . . the sounds of struggle can be heard . . .")
+                    elif fof.lower() == "flight":
+                        print(
+                            "a coward doesn't fight... but they do live another day")
 
-                else:  # you're not taking the crowbar?
-                    pass
+                elif take_crowbar == "n":  # you're not taking the crowbar?
+                    print(
+                        "You're done with the madness... frozen by your fears you stand still")
+                    print("""
+                    CRUNCH !#!#!#!#!#
+                    !#!#! CHOMP !#!#!
+                    !#!#!#!#!#! CRACK 
+                    """)
+                    self.life = False
+                    self.end()
             if self.crowbar == False:
                 print("You feel like you're missing something . . .")
                 continue
@@ -440,13 +611,13 @@ class Garage_class:
             if leave_storage.lower() == "n":
                 print(
                     "You tell yourself you don't want to go, but you have to... you must")
-                self.garage()
-                return self
+                self.check_car()
+
             if leave_storage.lower() == "y":
                 print(
                     "You muster up your courage and head for the encounter once again")
-                self.garage()
-                return self
+                self.check_car()
+
         # have everything but no encounter
         elif self.crowbar == True and self.car_key == True:
             print("You now have the means to open a car by choice, or force")
@@ -455,50 +626,36 @@ class Garage_class:
                 leave_storage = input("Head back to the garage? (y/n) \n")
             if leave_storage.lower() == "y":
                 print("You enter the garage door")
-                self.garage()
-                return self
+                self.check_car()
+
             elif leave_storage.lower() == "n":
                 print(
                     "You have no idea where to go, but the garage is the only mystery left")
                 self.check_car()
-                return self
+
         # knows encounter but no keys
         elif self.car_encounter == True:
             print("The fear still grips you...")
             leave_storage = input("\"office\" \"garage\" ")
             if leave_storage == "office":
                 self.office()
-                return self
+
             else:  # leave_storage == "garage"
                 you_sure = input(
                     "I'm glad that thing is locked in the car\n \"office\" \"garage\" ")
                 if you_sure.lower() == "office":
                     self.office()
-                    return self
+
                 else:
                     self.garage()
-                    return self
 
     def end(self):
         if self.socket_wrench == True:
             print(
                 "You grab a tire that looks like it will fit your car and leave the garage")
             self.key += 1
-            return {"key": self.key, "life": self.life}
-
-        # self.entrance()
-        # if self.life == False:
-        #     break
-        # self.garage()
-        # if self.life == False:
-        #     break
-        # if self.flash_light == True:
-        #     leave_storage = input(
-        #         "Which room would you like to enter? (\"Garage\" \"Office\" ")
-        #     while leave_storage.lower() != "garage" and leave_storage.lower() != "office":
-        #         leave_storage = input(
-        #             "Which room would you like to enter? (\"Garage\" \"Office\" ")
-
+            self.win = True
+            return
     # test to make sure class works
 
     def play_room_three(self):
