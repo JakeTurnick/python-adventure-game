@@ -26,7 +26,7 @@ class rm1_class:
     def printslow(self, message, COLORS):
         for c in message:
             print(COLORS + c, end='', flush=True)
-            time.sleep(0.01)
+            time.sleep(0.015)
             print(Style.RESET_ALL, end='', flush=True)
 
     def printextraslow(self, message, COLORS):
@@ -187,7 +187,7 @@ class rm1_class:
                     self.printslow(
                         "The nurse lunges at you. She closes the distance between you two at an alarming rate. Before you can even react she sticks a syringe in your chest and starts laughing. You have been injected with a heavy sedative. You died. \n", self.COLORS[1])
                     self.life = False
-                    break
+                    w
                 if choice == "no":
                     self.printslow(
                         "You hesitate and take a step backwards. Something feels off about the nurse. She notices you and starts sprinting at a full pace towards you. You turn to jump over the front desk but she catches you by the collar of your shirt. She stabs a syringe into your neck and starts laughing. You have been in injeced with a heavy sedative. You died.\n \n", self.COLORS[1])
