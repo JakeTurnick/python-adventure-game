@@ -8,7 +8,7 @@
 # two nurses are in the builiding last he recalls. He is not sure where they are
 
 from time import sleep
-# from main import Main_Game
+
 
 
 class rm1_class:
@@ -34,7 +34,7 @@ class rm1_class:
             self.play_lobby()
             return {"key": self.key, "life": self.life}
         if choice == "no":
-            self.test_mark()
+            self.back_to_main()
             return {"key": self.key, "life": self.life}
             # return
         # teting function currently takes you to the end of game.
@@ -323,7 +323,7 @@ class rm1_class:
 
             self.end_room_one()
 
-    def test_mark(self):
+    def back_to_main(self):
         self.end_room_one()
 
     # end export key to main
