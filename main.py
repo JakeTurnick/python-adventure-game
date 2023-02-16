@@ -81,12 +81,18 @@ class Main_Game:
 
     def new_test(self):
         while self.life == True:
-            room_choice = input(
-                "Which would you like to enter? (clinic/market/garage)\n")
 
-            while room_choice.lower() != "clinic" and room_choice.lower() != "market" and room_choice.lower() != "garage":
-                room_choice = input(
-                    "Which room would you like to enter? (rm1/rm2/rm3)\n")
+            print("Which room would you like to enter? \n")
+            print("clinic, market, or garage?: ", end="")
+            room_choice=input().lower()
+            while room_choice not in ['clinic','market','garage']:
+                print("Invalid input: please enter clinic, market, or garage: ", end="")
+                room_choice=input().lower()
+            # room_choice = input(
+            #     "Which would you like to enter? (clinic/market/garage)\n")
+            # while room_choice.lower() != "clinic" and room_choice.lower() != "market" and room_choice.lower() != "garage":
+                # room_choice = input(
+                #     "Which room would you like to enter? (rm1/rm2/rm3)\n")
 
             if room_choice.lower() == "clinic":
                 # print(f"You now have {self.key} keys")
