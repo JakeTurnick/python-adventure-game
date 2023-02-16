@@ -10,7 +10,6 @@
 from time import sleep
 
 
-
 class rm1_class:
     def __init__(self, main):
         self.key = main.key
@@ -324,7 +323,7 @@ class rm1_class:
             self.end_room_one()
 
     def back_to_main(self):
-        self.end_room_one()
+        return
 
     # end export key to main
 
