@@ -40,7 +40,9 @@ class rm2:
         if test_market.lower() == "y":
             self.play_room_two()
             return {"key": self.key, "life": self.life} 
-
+        else:
+            print("You don't have a choice lol. \n")
+            self.play_room_two()
             # test_market_keys = input("Would you like to increment keys? (y/n) : \n")
             # if test_market_keys.lower() == "y":
             #     self.key += 1
@@ -82,6 +84,7 @@ class rm2:
                 self.basket = True
                 self.aisle_or_stock()
             if pick_up_basket.lower() == "n":
+                self.printslow(("You move on and begin shopping without a BASKET. \n"), self.COLORS[4])
                 self.aisle_or_stock()
         else:
             self.printslow(("You wait...and wait...\n Seems like no one is here..."), self.COLORS[0])
@@ -131,7 +134,19 @@ class rm2:
             leave_room = input("Turn around? (y/n?)")
             if leave_room.lower() == "n":
                 self.printslow(("You chose to keep looking around the room... \n You see an old journal on the table"), self.COLORS[0])
-                break
+                self.printslow(("Suddenly...\n"), self.COLORS[0])
+                self.printslow(("You turn around and ...\n"), self.COLORS[0])
+                sleep(2)
+                self.printslow(("You see a massive humanoid creature with razor-sharp teeth, \ndark-beady eyes and wide, gapping mouth...\n"), self.COLORS[1])
+                sleep(2)
+                self.printslow(("It lets out an omnious growl...\n"), self.COLORS[1])
+                sleep(2)
+                self.printslow(("And lunges for your throat...\n"), self.COLORS[1])
+                if self.basket == True:
+                    self.printslow(("You blocked the creature's attack with the basket!!\n You throw it at the creature and it shrinks back into the shadows...\n You decide it's best to run back to the front of the store...\n"), self.COLORS[0])
+                    sleep(2)
+                    self.locate_key()
+                    break
             elif leave_room.lower() == "y":
                 self.printslow(("You chose to leave the room ...\n"), self.COLORS[0])
                 sleep(2)
